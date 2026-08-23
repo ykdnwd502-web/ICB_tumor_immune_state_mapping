@@ -3,7 +3,7 @@ Platform: x86_64-w64-mingw32/x64
 Running under: Windows 11 x64 (build 26200)
 
 Matrix products: default
-  LAPACK version 3.12.1
+LAPACK version 3.12.1
 
 locale:
 [1] LC_COLLATE=Chinese (Simplified)_China.utf8  LC_CTYPE=Chinese (Simplified)_China.utf8    LC_MONETARY=Chinese (Simplified)_China.utf8
