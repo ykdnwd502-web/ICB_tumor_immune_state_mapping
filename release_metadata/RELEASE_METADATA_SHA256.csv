@@ -1,11 +1,17 @@
 ﻿"file","sha256","size_bytes"
 "CLEAN_WORKSPACE_READY_FOR_RUN.txt","9fa0be5c06638705de44d727eedb868b7a0f2176b37b2bd9dae1538982020562","676"
 "INSTALLED_PACKAGES_BEFORE_RUN.csv","09831ee1989e603f77e487b4cc3a8ee2bf5725bb288575060f7b217a47eacac0","12418"
+<<<<<<< HEAD
 "REPOSITORY_SHA256_MANIFEST.csv","cb1a30e3ede63199270760c17679631393a3ac3a02331f7d64f25003987682a0","49981"
 "REPRODUCTION_LOG_INDEX.csv","c6388772315c02659db56bd26c1934c7b486bf63bbc342eabd7142c730dc4340","3522"
 "RUN_MANIFEST.csv","9225fd9d2afa4f647f413a091705fb4ee970b6e5de352e3476d4b49da1311551","39425"
 "SCRIPT_SHA256.csv","fd4d02b598ad02f105ec8d0665b509aed80ace4cabf65508c23cdf9c55ba561b","16984"
 "SESSIONINFO_INDEX.csv","aa7d12fd16d766d55417940afeafe56721fc112da878067caeefb22f92b10385","28800"
+=======
+"REPOSITORY_SHA256_MANIFEST.csv","b5f346c6cf26623803d921f7444faf15dd850993df58cb328596fd885120ec88","63204"
+"REPRODUCTION_LOG_INDEX.csv","c6388772315c02659db56bd26c1934c7b486bf63bbc342eabd7142c730dc4340","3522"
+"RUN_MANIFEST.csv","9225fd9d2afa4f647f413a091705fb4ee970b6e5de352e3476d4b49da1311551","39425"
+>>>>>>> 7a86b9cccc88b58ccfa78b4394717a28f42238bc
 "script_execution_log\01_GSE244982_PASS.txt","d00ec1574fcc3c34211a3d338b23f9c26499dec9443428755a85a2c5d0aad0eb","367"
 "script_execution_log\02_GSE78220_PASS.txt","28fd716bf069c195af7597450bc28094a6595bfdb3f4d7998702479dc4568117","343"
 "script_execution_log\03_state_scoring_robustness_analysis_STATUS.txt","ec7ec39921e36187ae5ff5889d673e5785c19593f9df68103d9a45bb4e0c3fed","416"
@@ -13,8 +19,13 @@
 "script_execution_log\05_bulk_response_sensitivity_analysis.txt","661bb606439da111e03de2df6197838504c27db087d971232a0da3b224d97840","736"
 "script_execution_log\06_GSE244983_scRNA_preprocess_major_annotation.txt","852b5ccf9069b3b441c81d260679cc5be649722bf6335c9929f6069e7b5f6b79","1096"
 "script_execution_log\07_GSE244983_scRNA_state_localization_source_attribution.txt","2c6501ec5905695ee2efd16c6f26c9c190c0be6c04a94739835d85f416f89d82","1871"
+<<<<<<< HEAD
 "script_execution_log\08b_GSE244983_malignant_subclustering_v1.4.2_FINAL.txt","c1c6c9cde0c1664974640ad79d1a6883b02eb124563c6c036cd945a65b9f1105","3069"
 "script_execution_log\08_GSE244983_CAF_stromal_analysis.txt","d993d1a33a6eaa62ed2c299db5659fc23f6cf6a3919e2e7098dd27cc4cd67cb0","2701"
+=======
+"script_execution_log\08_GSE244983_CAF_stromal_analysis.txt","d993d1a33a6eaa62ed2c299db5659fc23f6cf6a3919e2e7098dd27cc4cd67cb0","2701"
+"script_execution_log\08b_GSE244983_malignant_subclustering_v1.4.2_FINAL.txt","c1c6c9cde0c1664974640ad79d1a6883b02eb124563c6c036cd945a65b9f1105","3069"
+>>>>>>> 7a86b9cccc88b58ccfa78b4394717a28f42238bc
 "script_execution_log\09A_GSE244983_doublet_CNV_sensitivity_execution.txt","c19e3518bb33853b82d1685f2f6b4d84c9d7cded9359d8aaa472cde4a17c711a","1891"
 "script_execution_log\10_S20.txt","cb5e9bf486c9ef8c24b7cb61266464260cf8b4aee76ff2fec9f3e3db7f520f2c","2790"
 "script_execution_log\11_CosMx.txt","84855f7d299a52d14588ec879befd63087697d3e270fd6eb350af1e3c6cfa66c","2123"
@@ -24,6 +35,10 @@
 "script_execution_log\15_Additional_robustness_FULL_SEQUENTIAL_REPRODUCTION_LOG.txt","9da45eeeddd972672c212ff98c30b94300ce00afb7c8c6ae0e1bac5d91e63c53","5122"
 "script_execution_log\ALL_FIGURES_FULL_SEQUENTIAL_REPRODUCTION_LOG_FINAL.txt","0c11d9977e533f02f24ac6928b749dc7d58e82cba378d4623bddc1892ece52ad","6698"
 "script_execution_log\ICBcomb_TRUE_CLEAN_RUN_LOG.txt","e9ffc8f38ec3fa8d3c3952e2b39ad6c6971eeaa8e7f27b081807863ec3982f20","2209"
+<<<<<<< HEAD
+=======
+"SCRIPT_SHA256.csv","fd4d02b598ad02f105ec8d0665b509aed80ace4cabf65508c23cdf9c55ba561b","16984"
+>>>>>>> 7a86b9cccc88b58ccfa78b4394717a28f42238bc
 "sessionInfo\sessionInfo_01_GSE244982_bulk_state_scoring.txt","95fdceaf85809b753a94496e50ce4dba2b55bbdf4bc7fb1aab013ee2ace66e26","1395"
 "sessionInfo\sessionInfo_02_GSE78220_state_scoring_response_survival_analysis.txt","954fb624ac4862ac5e95e38b469f751dac58b9d968179d5ca5c5d4858b388cc4","1520"
 "sessionInfo\sessionInfo_03_state_scoring_robustness_analysis.txt","344e1b8d183467380bb9d8aaba9df29efa430c145498f029d986a578908b9d64","3354"
@@ -83,3 +98,7 @@
 "sessionInfo\sessionInfo_Supplementary Figure S8.txt","70048b56aa2343f6e918fea3950a2cd74a0a9c36afe36aa2832ee07fda38253b","3595"
 "sessionInfo\sessionInfo_Supplementary Figure S9.txt","f6056b978d33864eef33fb4308c81cdbc45bae96343ab4493a569076213277dd","3595"
 "sessionInfo\Step11A_spatial_build_and_state_scoring_sessionInfo.txt","03aca18500d67c38c979cfac47fa98cb5e2208badadee19da20a80951cfaa7dd","3486"
+<<<<<<< HEAD
+=======
+"SESSIONINFO_INDEX.csv","aa7d12fd16d766d55417940afeafe56721fc112da878067caeefb22f92b10385","28800"
+>>>>>>> 7a86b9cccc88b58ccfa78b4394717a28f42238bc
