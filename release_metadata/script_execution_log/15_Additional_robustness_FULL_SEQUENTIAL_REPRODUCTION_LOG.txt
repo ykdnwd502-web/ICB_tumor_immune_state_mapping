@@ -1,0 +1,214 @@
+============================================================ 15
+ADDITIONAL ROBUSTNESS FULL SEQUENTIAL REPRODUCTION LOG
+============================================================
+
+Project: D:/ICB_resistance_project
+
+Module: Additional robustness validation: GSE244983 patient-level
+structure + cross-cohort comparability analysis + Supplementary
+Figure/Table generation + frozen reproduction audit
+
+Run_date: 2026/09/10
+
+============================================================ EXECUTION
+CHAIN ============================================================
+
+Runner: run_15_Additional_robustness_full_sequential.R
+
+Execution order:
+
+01_GSE244983_patient_level_summary.R
+01_make_S29_patient_level_structure.R
+02_ICB_cross_cohort_comparability.R
+02_make_S30_cross_cohort_robustness.R 03_statistical_testing_inventory.R
+03_make_Table_S29_statistical_analysis_summary.R
+04_make_Table_S30_cross_cohort_comparability.R
+15_Additional_robustness_reproduction_check.R
+
+============================================================ INPUT
+CONTRACT ============================================================
+
+Primary input:
+
+1.  GSE244983 patient-level single-cell robustness source
+
+Role: Patient-level state reconstruction and lineage gate validation
+
+2.  Cross-cohort validation inputs:
+
+GSE78220 strict-binary external cohort
+
+GSE91061 pretreatment external cohort
+
+Role: Cross-cohort harmonization and predefined state association
+validation
+
+3.  Frozen four-state configuration:
+
+ICBcomb frozen four-state gene-set definition
+
+Role: Locked state scoring configuration
+
+============================================================ OUTPUTS
+GENERATED ============================================================
+
+S29 patient-level robustness:
+
+Output directory:
+
+results/tables/additional_robustness/S29_patient_level/
+
+Generated:
+
+S29 lineage gates S29 patient counts S29 patient state means S29 target
+state cell scores
+
+S30 cross-cohort robustness:
+
+Producer output:
+
+results/tables/cross_cohort_harmonization/
+
+Generated:
+
+cross_cohort_input_manifest.csv
+
+cross_cohort_sample_manifest.csv
+
+cross_cohort_sample_summary.csv
+
+cross_cohort_common_gene_manifest.csv
+
+cross_cohort_signature_gene_coverage.csv
+
+cross_cohort_raw_signature_scores.csv
+
+cross_cohort_harmonized_four_state_scores.csv
+
+cross_cohort_harmonized_state_scores_with_response.csv
+
+cross_cohort_fixed_direction_AUC_DeLong_summary.csv
+
+cross_cohort_seeded_bootstrap_AUC_values.csv
+
+cross_cohort_seeded_bootstrap_AUC_summary.csv
+
+cross_cohort_seeded_within_cohort_permutation_values.csv
+
+cross_cohort_seeded_within_cohort_permutation_summary.csv
+
+Intermediate objects:
+
+results/intermediate/cross_cohort_harmonization/
+
+cross_cohort_common_expression_raw.rds
+
+cross_cohort_common_expression_ComBat_batch_only.rds
+
+cross_cohort_ComBat_gene_row_z.rds
+
+cross_cohort_final_analysis_table.rds
+
+S30 reporting:
+
+Output directory:
+
+results/reporting/additional_robustness/S30_cross_cohort
+
+Generated:
+
+S30_PanelA_raw_AUC.csv
+
+S30_PanelB_LOSO.csv
+
+S30_PanelC_composition_adjusted.csv
+
+S30_PanelD_cross_cohort.csv
+
+S30_PanelE_attenuation.csv
+
+S30_input_manifest.csv
+
+S30_reporting_gates.csv
+
+S30_output_MD5_manifest.csv
+
+Supplementary Tables:
+
+Supplementary Table S29. Statistical analysis and multiple-testing
+summary.xlsx
+
+Supplementary Table S30. Quantitative cross-cohort comparability
+analysis of predefined tumor-immune state associations between GSE78220
+and GSE91061.xlsx
+
+============================================================
+CROSS-COHORT VALIDATION CONTRACT
+============================================================
+
+GSE78220 strict-binary n: 27
+
+GSE91061 strict-binary pretreatment n: 33
+
+Combined n: 60
+
+Common genes: 19799
+
+ComBat model: cohort batch only; response covariate = NO
+
+Canonical fixed-direction AUCs:
+
+Immune_defective_Cold: AUC 0.5622857
+
+Myeloid_Treg_Immunosuppressive: AUC 0.4720000
+
+Tumor_dedifferentiation_Stromal_remodeling: AUC 0.6057143
+
+Melanocytic_Differentiation: AUC 0.4548571
+
+Seeded bootstrap: 2000/state
+
+Seeded within-cohort permutation: 5000/state
+
+============================================================
+REPRODUCTION RESULT
+============================================================
+
+S29 lineage: 8/8 PASS
+
+S29 max patient-state mean difference: 2.220446e-16
+
+Cross-cohort producer: 7/7 PASS
+
+S30 reporting: 10/10 PASS
+
+Table S29 inventory rows: 20
+
+Table S30 gates: 8/8 PASS
+
+Artifacts: 6/6 PASS
+
+Blocking failures: 0
+
+Overall: PASS
+
+Decision: READY_FOR_PUBLIC_FREEZE
+
+============================================================ SESSION
+INFORMATION ============================================================
+
+SessionInfo:
+
+logs/sessionInfo_15_Runner_Sequential.txt
+
+============================================================ FINAL
+STATUS ============================================================
+
+15 Additional robustness sequential reproduction completed successfully.
+
+Current outputs reproduce frozen analysis contracts.
+
+Module approved for public release freeze.
+
+============================================================ END OF LOG
+============================================================

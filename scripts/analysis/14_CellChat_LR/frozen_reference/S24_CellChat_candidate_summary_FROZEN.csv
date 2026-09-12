@@ -1,0 +1,13 @@
+pair_family,ligand_pattern,receptor_pattern,n_interactions,n_source_target_pairs,max_prob,median_prob,min_p_value,top_source_target,direction_classes,nominated_by_cellchat
+MIF-CD74,^MIF$,CD74,35.0,26.0,0.343434410010048,0.186708833880009,0.0,Cycling malignant → B/plasma cells,Immune -> tumor/stromal;Tumor/stromal -> immune;Within immune;Within tumor/stromal,True
+MIF-CXCR4,^MIF$,CXCR4,20.0,20.0,0.343434410010048,0.187888879386975,0.0,Cycling malignant → B/plasma cells,Tumor/stromal -> immune;Within immune,True
+COL1A1-CD44,^COL1A1$,CD44,8.0,8.0,0.333527255199891,0.180285488905014,0.0,Endothelial → Cycling malignant,Tumor/stromal -> immune;Within tumor/stromal,True
+COL1A2-CD44,^COL1A2$,CD44,13.0,13.0,0.32766387024545,0.065069261085022,0.0,Endothelial → Cycling malignant,Tumor/stromal -> immune;Within tumor/stromal,True
+MIF-CD44,^MIF$,CD44,15.0,15.0,0.289380077096464,0.186708833880009,0.0,Cycling malignant → Cycling malignant,Immune -> tumor/stromal;Tumor/stromal -> immune;Within immune;Within tumor/stromal,True
+APP-CD74,^APP$,CD74,24.0,24.0,0.274280107739269,0.119982733515004,0.0,CAF/stromal-like cells → Myeloid cells,Tumor/stromal -> immune;Within tumor/stromal,True
+FN1-CD44,^FN1$,CD44,18.0,18.0,0.217436688500634,0.0877175032679459,0.0,Endothelial → Cycling malignant,Tumor/stromal -> immune;Within tumor/stromal,True
+SPP1-CD44,^SPP1$,CD44,13.0,13.0,0.139979165252893,0.0676008506871322,0.0,Malignant → Cycling malignant,Immune -> tumor/stromal;Tumor/stromal -> immune;Within tumor/stromal,True
+GDF15-TGFBR2,^GDF15$,TGFBR2,13.0,13.0,0.128030801237975,0.0202714401117967,0.0,Cycling malignant → CAF/stromal-like cells,Tumor/stromal -> immune;Within tumor/stromal,True
+SPP1-ITGAV/ITGB1,^SPP1$,ITGAV.*ITGB1|ITGB1.*ITGAV,15.0,15.0,0.0765628091210613,0.0352189016369127,0.0,Malignant → Endothelial,Immune -> tumor/stromal;Tumor/stromal -> immune;Within tumor/stromal,True
+SPP1-ITGAV/ITGB5,^SPP1$,ITGAV.*ITGB5|ITGB5.*ITGAV,15.0,15.0,0.0369733966345893,0.0118531323202195,0.0,Malignant → Endothelial,Immune -> tumor/stromal;Within tumor/stromal,True
+COL3A1-CD44,^COL3A1$,CD44,0.0,0.0,,,,,,False

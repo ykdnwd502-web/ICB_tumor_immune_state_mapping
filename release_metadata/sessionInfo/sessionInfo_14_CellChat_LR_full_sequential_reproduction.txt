@@ -1,0 +1,101 @@
+
+> cat(
++   "============================================================\n"
++ )
+============================================================
+
+> cat(
++   "14_CellChat_LR FULL SEQUENTIAL REPRODUCTION SESSION INFO\n"
++ )
+14_CellChat_LR FULL SEQUENTIAL REPRODUCTION SESSION INFO
+
+> cat(
++   "============================================================\n\n"
++ )
+============================================================
+
+
+> cat(
++   "Project:\n"
++ )
+Project:
+
+> cat(
++   PROJECT_DIR
++ )
+D:/ICB_resistance_project
+> cat(
++   "\n\nModule:\n"
++ )
+
+
+Module:
+
+> cat(
++   "14_CellChat_LR\n"
++ )
+14_CellChat_LR
+
+> cat(
++   "\nExecution date:\n"
++ )
+
+Execution date:
+
+> cat(
++   as.character(Sys.Date())
++ )
+2026-09-10
+> cat(
++   "\n\nR session information:\n\n"
++ )
+
+
+R session information:
+
+
+> print(
++   sessionInfo()
++ )
+R version 4.5.2 (2025-10-31 ucrt)
+Platform: x86_64-w64-mingw32/x64
+Running under: Windows 11 x64 (build 26200)
+
+Matrix products: default
+  LAPACK version 3.12.1
+
+locale:
+[1] LC_COLLATE=Chinese (Simplified)_China.utf8  LC_CTYPE=Chinese (Simplified)_China.utf8    LC_MONETARY=Chinese (Simplified)_China.utf8 LC_NUMERIC=C                               
+[5] LC_TIME=Chinese (Simplified)_China.utf8    
+
+time zone: Asia/Shanghai
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] patchwork_1.3.2     scales_1.4.0        ggplot2_4.0.3       tidyr_1.3.2         dplyr_1.2.1         Biobase_2.70.0      BiocGenerics_0.56.0 generics_0.1.4     
+
+loaded via a namespace (and not attached):
+  [1] RcppAnnoy_0.0.23       splines_4.5.2          later_1.4.8            tibble_3.3.1           polyclip_1.10-7        ggnetwork_0.5.14       fastDummies_1.7.6      lifecycle_1.0.5       
+  [9] rstatix_1.1.0          doParallel_1.0.17      globals_0.19.1         lattice_0.22-7         MASS_7.3-65            backports_1.5.1        magrittr_2.0.4         openxlsx_4.2.8.1      
+ [17] plotly_4.12.1          sass_0.4.10            jquerylib_0.1.4        httpuv_1.6.17          otel_0.2.0             Seurat_5.5.1           collapse_2.1.7         NMF_0.28              
+ [25] sctransform_0.4.3      zip_3.0.2              spam_2.11-4            sp_2.2-3               spatstat.sparse_3.2-0  reticulate_1.46.0      cowplot_1.2.0          pbapply_1.7-4         
+ [33] RColorBrewer_1.1-3     abind_1.4-8            Rtsne_0.17             purrr_1.2.1            presto_1.1.0           circlize_0.4.18        IRanges_2.44.0         S4Vectors_0.48.1      
+ [41] ggrepel_0.9.8          irlba_2.3.7            listenv_1.0.0          spatstat.utils_3.2-4   goftest_1.2-3          RSpectra_0.16-2        spatstat.random_3.5-1  fitdistrplus_1.2-6    
+ [49] parallelly_1.48.0      svglite_2.2.2          codetools_0.2-20       tidyselect_1.2.1       shape_1.4.6.1          farver_2.1.2           matrixStats_1.5.0      stats4_4.5.2          
+ [57] spatstat.explore_3.8-2 jsonlite_2.0.0         GetoptLong_1.1.1       BiocNeighbors_2.4.0    progressr_1.0.0        Formula_1.2-6          ggridges_0.5.7         ggalluvial_0.12.6     
+ [65] survival_3.8-3         iterators_1.0.14       systemfonts_1.3.2      foreach_1.5.2          tools_4.5.2            ragg_1.5.2             sna_2.8                ica_1.0-3             
+ [73] Rcpp_1.1.2             glue_1.8.0             CellChat_2.2.0.9001    gridExtra_2.3.1        withr_3.0.3            BiocManager_1.30.27    fastmap_1.2.0          digest_0.6.39         
+ [81] R6_2.6.1               mime_0.13              textshaping_1.0.5      colorspace_2.1-3       scattermore_1.2        tensor_1.5.1           dichromat_2.0-1        spatstat.data_3.1-9   
+ [89] data.table_1.18.6.1    FNN_1.1.4.1            httr_1.4.8             htmlwidgets_1.6.4      uwot_0.2.4             pkgconfig_2.0.3        gtable_0.3.6           registry_0.5-1        
+ [97] ComplexHeatmap_2.26.1  lmtest_0.9-40          S7_0.2.2               htmltools_0.5.9        carData_3.0-6          dotCall64_1.2          clue_0.3-68            SeuratObject_5.4.0    
+[105] png_0.1-9              spatstat.univar_3.2-0  rstudioapi_0.19.0      reshape2_1.4.5         rjson_0.2.23           coda_0.19-4.1          statnet.common_4.13.0  nlme_3.1-168          
+[113] cachem_1.1.0           zoo_1.9-0              GlobalOptions_0.1.4    stringr_1.6.0          KernSmooth_2.23-26     parallel_4.5.2         miniUI_0.1.2           pillar_1.11.1         
+[121] grid_4.5.2             vctrs_0.7.1            RANN_2.6.2             promises_1.5.0         ggpubr_1.0.0           car_3.1-5              xtable_1.8-8           cluster_2.1.8.1       
+[129] cli_3.6.6              compiler_4.5.2         rlang_1.2.0            crayon_1.5.3           rngtools_1.5.2         future.apply_1.20.2    ggsignif_0.6.4         labeling_0.4.3        
+[137] plyr_1.8.9             stringi_1.8.9          viridisLite_0.4.3      network_1.20.0         deldir_2.0-4           gridBase_0.4-7         spatstat.geom_3.8-2    Matrix_1.7-6          
+[145] RcppHNSW_0.7.0         future_1.75.0          shiny_1.14.0           ROCR_1.0-12            igraph_2.3.3           broom_1.0.13           bslib_0.12.0          
+
+> sink()

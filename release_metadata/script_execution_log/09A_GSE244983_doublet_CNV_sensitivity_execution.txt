@@ -1,0 +1,161 @@
+Script:
+run_09A_GSE244983_doublet_CNV_sensitivity.R
+
+
+Module:
+09A_GSE244983_doublet_CNV_sensitivity
+
+
+Status:
+PASS
+
+
+Execution date:
+2026-09-10
+
+
+Project root:
+D:/ICB_resistance_project
+
+
+Input:
+
+Canonical state-localized Seurat object:
+
+GSE244983_seurat_state_localized.rds
+
+Input dimensions:
+
+Cells:
+26,053
+
+Features:
+11,616
+
+
+Workflow:
+
+Step 1:
+01_input_lineage_audit.R
+
+Result:
+PASS
+
+Input lineage audit confirmed:
+26,053 cells / 11,616 features
+
+
+Step 2:
+02_pANN_doublet_detection.R
+
+Result:
+PASS
+
+Sample-wise pANN doublet detection completed:
+
+Pat_ICBnaive1:
+7414 cells
+
+Pat_ICBnaive2:
+9081 cells
+
+Pat5:
+2370 cells
+
+Pat42:
+7188 cells
+
+
+Step 3:
+03_finalize_doublet_filter.R
+
+Result:
+PASS
+
+Singlet retention:
+
+24,711 / 26,053 cells
+
+
+Step 4:
+04_primary_doublet_robustness.R
+
+Result:
+PASS
+
+Scientific sensitivity differences reported without hard exclusion.
+
+
+Step 5:
+05_doublet_rate_sensitivity.R
+
+Result:
+PASS
+
+Sensitivity analyses completed:
+
+Expected doublet rates:
+5%
+7.5%
+10%
+
+
+Step 6:
+06_generate_inferCNV_gene_order.R
+
+Result:
+PASS
+
+Generated hg38 inferCNV gene-order file:
+
+10,883 genes
+
+
+Step 7:
+07_run_inferCNV_support.R
+
+Result:
+PASS
+
+inferCNV processing completed.
+
+Input after gene-order reduction:
+
+10,883 genes
+
+7,194 cells
+
+
+inferCNV filtering:
+
+Genes retained after expression filtering:
+8,191 genes
+
+
+Step 8:
+08_generate_CNV_summary.R
+
+Result:
+PASS
+
+
+Generated outputs:
+
+results/tables/GSE244983/doublet_CNV_sensitivity/
+
+
+Quality notes:
+
+Non-blocking warnings observed:
+
+- select() one-to-many mapping message during gene-order generation.
+- inferCNV recommended scipen option warning.
+
+No workflow failure occurred.
+
+
+Final status:
+
+09A_GSE244983_doublet_CNV_sensitivity module completed successfully.
+
+PASS

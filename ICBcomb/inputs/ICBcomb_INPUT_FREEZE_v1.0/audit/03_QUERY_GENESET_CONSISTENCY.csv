@@ -1,0 +1,14 @@
+﻿GeneSet,gmt_n,summary_n,long_format_n,upload_manifest_n,txt_n,gmt_vs_txt_gene_set_exact,gmt_vs_long_gene_set_exact,all_counts_exact
+Immune_defective_Cold_RESTORE_curated,37,37,37,37,37,True,True,True
+Immune_defective_Cold_RESTORE_data_driven,100,100,100,100,100,True,True,True
+Immune_defective_Cold_RESTORE_hybrid,98,98,98,98,98,True,True,True
+Myeloid_Treg_Immunosuppressive_SUPPRESS_curated,34,34,34,34,34,True,True,True
+Myeloid_Treg_Immunosuppressive_SUPPRESS_data_driven,100,100,100,100,100,True,True,True
+Myeloid_Treg_Immunosuppressive_SUPPRESS_hybrid,73,73,73,73,73,True,True,True
+Tumor_dedifferentiation_Stromal_remodeling_SUPPRESS_curated,40,40,40,40,40,True,True,True
+Tumor_dedifferentiation_Stromal_remodeling_SUPPRESS_data_driven,100,100,100,100,100,True,True,True
+Tumor_dedifferentiation_Stromal_remodeling_SUPPRESS_hybrid,81,81,81,81,81,True,True,True
+Melanocytic_Differentiation_REFERENCE_curated,8,8,8,8,8,True,True,True
+Melanocytic_Differentiation_REFERENCE_data_driven,100,100,100,100,100,True,True,True
+Melanocytic_Differentiation_REFERENCE_hybrid,32,32,32,32,32,True,True,True
+Dedifferentiated_inflammatory_REFERENCE,96,96,96,96,96,True,True,True

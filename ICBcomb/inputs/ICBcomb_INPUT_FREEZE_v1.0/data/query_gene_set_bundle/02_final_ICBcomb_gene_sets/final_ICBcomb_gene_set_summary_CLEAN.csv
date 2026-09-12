@@ -1,0 +1,14 @@
+"GeneSet","n_genes"
+"Immune_defective_Cold_RESTORE_curated",37
+"Immune_defective_Cold_RESTORE_data_driven",100
+"Immune_defective_Cold_RESTORE_hybrid",98
+"Myeloid_Treg_Immunosuppressive_SUPPRESS_curated",34
+"Myeloid_Treg_Immunosuppressive_SUPPRESS_data_driven",100
+"Myeloid_Treg_Immunosuppressive_SUPPRESS_hybrid",73
+"Tumor_dedifferentiation_Stromal_remodeling_SUPPRESS_curated",40
+"Tumor_dedifferentiation_Stromal_remodeling_SUPPRESS_data_driven",100
+"Tumor_dedifferentiation_Stromal_remodeling_SUPPRESS_hybrid",81
+"Melanocytic_Differentiation_REFERENCE_curated",8
+"Melanocytic_Differentiation_REFERENCE_data_driven",100
+"Melanocytic_Differentiation_REFERENCE_hybrid",32
+"Dedifferentiated_inflammatory_REFERENCE",96

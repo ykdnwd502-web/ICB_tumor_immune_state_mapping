@@ -1,0 +1,5 @@
+"state_col","state_label","biological_interpretation"
+"Immune_defective_Cold","Immune-defective/Cold","Low antigen presentation, IFN response and cytotoxic T-cell activity"
+"Myeloid_Treg_Immunosuppressive","Myeloid-Treg Immunosuppressive","Myeloid inflammatory and Treg-immunoregulatory axis"
+"Tumor_dedifferentiation_Stromal_remodeling","Tumor-dedifferentiation/Stromal-remodeling","Tumor dedifferentiation/plasticity and stromal-remodeling axis"
+"Melanocytic_Differentiation","Melanocytic Differentiation","Melanocytic lineage/differentiation reference axis"

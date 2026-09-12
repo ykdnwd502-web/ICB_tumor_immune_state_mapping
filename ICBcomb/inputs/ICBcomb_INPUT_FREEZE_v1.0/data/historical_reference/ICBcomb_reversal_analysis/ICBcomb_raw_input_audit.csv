@@ -1,0 +1,4 @@
+"file","n_row","n_col","all_required_cols_present","missing_cols","first_Name","first_Term"
+"ICBcomb_Immune_cold_RESTORE_hybrid_results.csv",15,14,TRUE,"","prerank","Immune_cold_RESTORE_hybrid"
+"ICBcomb_Myeloid_Treg_SUPPRESS_hybrid_results.csv",15,14,TRUE,"","prerank","Myeloid_Treg_SUPPRESS_hybrid"
+"ICBcomb_Tumor_dedifferentiation_SUPPRESS_hybrid_results.csv",15,14,TRUE,"","prerank","Tumor_dedifferentiation_SUPPRESS_hybrid"

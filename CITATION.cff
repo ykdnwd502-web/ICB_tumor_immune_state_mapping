@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+
+message: "If you use this repository, please cite the associated publication and archived release."
+
+title: "ICB tumor immune state mapping"
+
+type: software
+
+authors:
+  - family-names: "Lin"
+    given-names: "Liping"
+    affiliation: "First Affiliated Hospital of Guangxi Medical University"
+
+repository-code: "https://github.com/ykdnwd502-web/ICB_tumor_immune_state_mapping"
+
+keywords:
+  - immunotherapy
+  - tumor microenvironment
+  - immune state mapping
+  - spatial transcriptomics
+  - single-cell RNA sequencing
+
+license: MIT
+
+version: "1.0.0"
+
+date-released: "2026-09-12"

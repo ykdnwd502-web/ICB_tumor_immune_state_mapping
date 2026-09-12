@@ -1,0 +1,281 @@
+Script:
+
+run_10_S20_full_sequential_reproduction.R
+
+
+Module:
+
+S20_external_spatial_recurrence
+
+
+Status:
+
+PASS
+
+
+Execution date:
+
+2026-09-10
+
+
+Project root:
+
+D:/ICB_resistance_project
+
+
+
+Input:
+
+
+Frozen S20 state-gene configuration:
+
+public_release/S20_external_spatial_recurrence/config/
+
+S20_locked_state_genes.csv
+
+
+External spatial datasets:
+
+GSE250636 Visium spatial transcriptomics dataset
+
+Thrane2018 legacy spatial transcriptomics dataset
+
+
+
+Frozen configuration validation:
+
+PASS
+
+
+
+Workflow:
+
+
+Step 1:
+
+01_GSE250636_build_18J.R
+
+
+Result:
+
+PASS
+
+
+GSE250636 external spatial reconstruction completed.
+
+Frozen S20 state-gene lock loaded successfully.
+
+
+
+Step 2:
+
+02_Thrane2018_build_18J.R
+
+
+Result:
+
+PASS
+
+
+Thrane2018 legacy-ST reconstruction completed.
+
+Matrix orientation audit and state-gene coverage validation completed.
+
+
+
+Step 3:
+
+03_build_historical_S28_from_18J.R
+
+
+Result:
+
+PASS
+
+
+Historical external spatial recurrence audit layer generated.
+
+S28 output inventory verified.
+
+
+
+Step 4:
+
+04_GSE250636_build_S20_canonical.R
+
+
+Result:
+
+PASS
+
+
+Canonical GSE250636 S20 module regenerated.
+
+
+Generated:
+
+S20_GSE250636_state_genes_used_long.csv
+
+
+
+Step 5:
+
+05_Thrane2018_build_S20_canonical.R
+
+
+Result:
+
+PASS
+
+
+Canonical Thrane2018 S20 module regenerated.
+
+
+Generated:
+
+S20_Thrane2018_state_genes_used_long.csv
+
+
+
+Step 6:
+
+06_verify_S20_locked_state_genes.R
+
+
+Result:
+
+PASS
+
+
+Frozen S20 state-gene lock verification completed.
+
+
+Verified:
+
+Frozen public lock
+
++
+
+GSE250636 canonical state-gene table
+
++
+
+Thrane2018 canonical state-gene table
+
+
+Lock consistency:
+
+PASS
+
+
+
+Step 7:
+
+07_S20_aggregate.R
+
+
+Result:
+
+PASS
+
+
+Cross-cohort S20 aggregation completed.
+
+
+
+Step 8:
+
+08_S20_make_figure.R
+
+
+Result:
+
+PASS
+
+
+S20 figure-source tables and reporting outputs generated.
+
+
+
+Step 9:
+
+09_S20_external_spatial_recurrence_reproduction_check.R
+
+
+Result:
+
+PASS
+
+
+Final S20 reproduction audit completed.
+
+
+
+Validation summary:
+
+
+Historical 18J outputs:
+
+PASS
+
+
+Historical S28 outputs:
+
+PASS
+
+
+Canonical dataset outputs:
+
+PASS
+
+
+State-gene lock consistency:
+
+PASS
+
+
+Canonical numeric reproducibility:
+
+PASS
+
+
+Aggregate consistency gates:
+
+PASS
+
+
+Figure/reporting outputs:
+
+PASS
+
+
+
+Quality notes:
+
+
+Non-blocking warnings observed:
+
+- Package build-version warnings only.
+
+No workflow failure occurred.
+
+
+
+Session information:
+
+logs/sessionInfo_10_S20_full_sequential_reproduction.txt
+
+
+
+Final status:
+
+
+S20_external_spatial_recurrence module completed successfully.
+
+
+PASS
+
+
+Decision:
+
+READY_FOR_S20_ANALYSIS_FREEZE

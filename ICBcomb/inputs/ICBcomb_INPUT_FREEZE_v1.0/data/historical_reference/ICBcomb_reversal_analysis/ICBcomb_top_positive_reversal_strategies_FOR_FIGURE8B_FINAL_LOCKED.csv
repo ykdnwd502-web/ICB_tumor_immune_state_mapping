@@ -1,0 +1,11 @@
+state,rank_within_state,strategy,median_reversal_score,support_n,support_dataset_n,min_FDR_q_val,median_FDR_q_val,representative_names
+immune-defective/cold,1,Cytokine/IL-15 + ICB,2.2592815400855706,1,1,0,0,prerank
+immune-defective/cold,2,Avadomide/IMiD + ICB,2.180234875209325,10,2,0,0,prerank
+immune-defective/cold,3,Epigenetic therapy + ICB,1.4446937816761298,3,3,0.008323424494649217,0.018930957683741603,prerank
+immune-defective/cold,4,Ascorbic acid + ICB,1.2306283508683498,1,1,0.185606060606061,0.185606060606061,prerank
+myeloid–Treg immunosuppressive,1,Avadomide/IMiD + ICB,2.0224243431033497,10,2,0,0,prerank
+myeloid–Treg immunosuppressive,2,Epigenetic therapy + ICB,1.6338458107037501,3,3,0,0.0048602673147022995,prerank
+myeloid–Treg immunosuppressive,3,Ascorbic acid + ICB,1.3213271976158099,1,1,0.12433862433862401,0.12433862433862401,prerank
+tumor-dedifferentiation/stromal-remodeling,1,Epigenetic therapy + ICB,1.7961455210629302,3,3,0,0,prerank
+tumor-dedifferentiation/stromal-remodeling,2,Avadomide/IMiD + ICB,1.65565535186319,9,2,0,0.005201560468140439,prerank
+tumor-dedifferentiation/stromal-remodeling,3,Ascorbic acid + ICB,1.23522283072629,1,1,0.20232896652110602,0.20232896652110602,prerank

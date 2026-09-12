@@ -1,0 +1,4 @@
+file,n_rows,n_cols,inferred_state,inferred_direction,inferred_gene_set_version,all_required_cols_present,missing_cols,first_Name,first_Term
+ICBcomb_Immune_cold_RESTORE_hybrid_results.csv,15,14,immune-defective/cold,RESTORE,hybrid,TRUE,,prerank,Immune_cold_RESTORE_hybrid
+ICBcomb_Myeloid_Treg_SUPPRESS_hybrid_results.csv,15,14,myeloid–Treg immunosuppressive,SUPPRESS,hybrid,TRUE,,prerank,Myeloid_Treg_SUPPRESS_hybrid
+ICBcomb_Tumor_dedifferentiation_SUPPRESS_hybrid_results.csv,15,14,tumor-dedifferentiation/stromal-remodeling,SUPPRESS,hybrid,TRUE,,prerank,Tumor_dedifferentiation_SUPPRESS_hybrid

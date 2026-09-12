@@ -1,0 +1,323 @@
+============================================================
+12_Primary_Visium FULL SEQUENTIAL REPRODUCTION LOG
+============================================================
+
+Project:
+ICB_resistance_project
+
+Module:
+12_Primary_Visium
+
+Purpose:
+One-click sequential reproduction of primary Visium spatial transcriptomic
+analysis, including spatial quality control, state-score localization,
+dual-high neighborhood assessment, threshold-independent spatial
+co-variation, composition-aware sensitivity analyses, humoral/TLS context
+analysis, and final supplementary figure/table generation.
+
+Execution date:
+2026/09/10
+
+Environment:
+R version:
+[recorded in sessionInfo]
+
+Working directory:
+D:/ICB_resistance_project
+
+
+============================================================
+PIPELINE OVERVIEW
+============================================================
+
+Scripts executed sequentially:
+
+01_Visium_build_object_and_state_scoring.R
+
+02_Visium_spatial_QC_Moran_colocalization.R
+
+03_Visium_dual_high_niche_analysis.R
+
+03B_Visium_make_Figure8.R
+
+04_Visium_threshold_independent_covariation.R
+
+05_Visium_composition_aware_analysis.R
+
+06_Visium_humoral_TLS_context.R
+
+07_Visium_primary_canonical_analysis.R
+
+08_Visium_make_S15_S19_figures.R
+
+09_Visium_compare_with_frozen.R
+
+09A_Visium_diagnose_reproduction_mismatches.R
+
+
+============================================================
+STEP EXECUTION SUMMARY
+============================================================
+
+
+------------------------------------------------------------
+STEP 01
+Script:
+01_Visium_build_object_and_state_scoring.R
+
+Status:
+PASS
+
+Input:
+Primary Visium raw expression matrix,
+spatial coordinates,
+sample metadata,
+frozen tumor–immune state gene-set definitions.
+
+Output:
+Canonical Visium object,
+state-score matrices,
+intermediate spatial objects.
+
+Notes:
+Primary Visium object construction and frozen state-score calculation
+completed successfully.
+
+
+------------------------------------------------------------
+STEP 02
+Script:
+02_Visium_spatial_QC_Moran_colocalization.R
+
+Status:
+PASS
+
+Input:
+Canonical Visium object,
+spatial coordinates,
+state-score matrices.
+
+Output:
+Spatial QC metrics,
+Moran-type spatial autocorrelation statistics,
+state-score spatial correlation outputs.
+
+Notes:
+Spatial autocorrelation and QC-residualized analyses completed.
+
+
+------------------------------------------------------------
+STEP 03
+Script:
+03_Visium_dual_high_niche_analysis.R
+
+Status:
+PASS
+
+Input:
+State-score spatial matrix.
+
+Output:
+Dual-high versus neither-high spot classification,
+enrichment statistics,
+niche-level summaries.
+
+Notes:
+Threshold-defined spatial niche assessment completed.
+
+
+------------------------------------------------------------
+STEP 03B
+Script:
+03B_Visium_make_Figure8.R
+
+Status:
+PASS
+
+Input:
+Canonical Figure 8 source tables.
+
+Output:
+Figure 8 source data and finalized figure panels.
+
+Notes:
+Primary spatial figure generation completed.
+
+
+------------------------------------------------------------
+STEP 04
+Script:
+04_Visium_threshold_independent_covariation.R
+
+Status:
+PASS
+
+Input:
+Continuous state-score spatial matrices.
+
+Output:
+Threshold-independent spatial co-variation statistics.
+
+Notes:
+Continuous spatial association analysis completed without binary
+threshold dependence.
+
+
+------------------------------------------------------------
+STEP 05
+Script:
+05_Visium_composition_aware_analysis.R
+
+Status:
+PASS
+
+Input:
+Spatial state scores,
+composition-related covariates.
+
+Output:
+Composition-adjusted spatial association analyses.
+
+Notes:
+Composition-aware sensitivity framework completed.
+
+
+------------------------------------------------------------
+STEP 06
+Script:
+06_Visium_humoral_TLS_context.R
+
+Status:
+PASS
+
+Input:
+Visium spatial object,
+immune and TLS-related modules.
+
+Output:
+Humoral/TLS spatial context analyses.
+
+Notes:
+TLS-like and immune-context analyses completed.
+
+
+------------------------------------------------------------
+STEP 07
+Script:
+07_Visium_primary_canonical_analysis.R
+
+Status:
+PASS
+
+Input:
+All upstream Visium intermediate objects.
+
+Output:
+Canonical primary Visium analysis tables.
+
+Notes:
+Primary frozen analysis workflow reproduced.
+
+
+------------------------------------------------------------
+STEP 08
+Script:
+08_Visium_make_S15_S19_figures.R
+
+Status:
+PASS
+
+Input:
+Validated source tables.
+
+Output:
+Supplementary Figure S15-S19 source files.
+
+Notes:
+Supplementary spatial figure generation completed.
+
+
+------------------------------------------------------------
+STEP 09
+Script:
+09_Visium_compare_with_frozen.R
+
+Status:
+PASS
+
+Input:
+Frozen reference outputs.
+
+Output:
+Comparison audit tables.
+
+Notes:
+Frozen output comparison completed.
+
+
+------------------------------------------------------------
+STEP 09A
+Script:
+09A_Visium_diagnose_reproduction_mismatches.R
+
+Status:
+PASS
+
+Input:
+Generated outputs and frozen references.
+
+Output:
+Diagnostic comparison report.
+
+Notes:
+Final reproduction diagnostic completed.
+No blocking mismatch identified.
+
+
+============================================================
+FINAL OUTPUT SUMMARY
+============================================================
+
+Primary Visium reproduction:
+PASS
+
+Spatial QC:
+PASS
+
+Moran-type spatial autocorrelation:
+PASS
+
+Dual-high spatial niche analysis:
+PASS
+
+Threshold-independent co-variation:
+PASS
+
+Composition-aware sensitivity:
+PASS
+
+Humoral/TLS contextual analysis:
+PASS
+
+Supplementary Figure S15-S19 generation:
+PASS
+
+Frozen-output comparison:
+PASS
+
+
+============================================================
+REPRODUCIBILITY ASSESSMENT
+============================================================
+
+All 12_Primary_Visium analysis modules completed successfully.
+
+The reproduced outputs were generated from frozen state-score definitions,
+canonical spatial objects, and predefined analytical procedures.
+
+No analytical parameters, state definitions, or statistical thresholds
+were modified during reproduction.
+
+============================================================
+12_Primary_Visium FULL SEQUENTIAL REPRODUCTION COMPLETED
+============================================================

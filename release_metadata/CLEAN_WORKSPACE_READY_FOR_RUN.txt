@@ -1,0 +1,43 @@
+﻿ICB_resistance_project FINAL CLEAN WORKSPACE
+
+Project:
+D:\ICB_resistance_project
+
+Frozen archive:
+D:\Frozen_Input_Archive_v1.0.zip
+
+
+Completed:
+
+[PASS] Frozen CellChat locked README restored
+[PASS] Regenerable CosMx outputs removed
+[PASS] SCRIPT_SHA256 regenerated
+[PASS] RELEASE_METADATA_SHA256 regenerated
+[PASS] REPOSITORY_SHA256_MANIFEST regenerated
+
+
+Remaining prerequisites:
+
+1. Raw data acquisition must be completed:
+
+scripts/data_acquisition/00_run_data_acquisition.R
+
+
+2. Validation must reach:
+
+Decision: READY_FOR_ANALYSIS_CHAIN
+
+
+3. Do not modify:
+
+scripts/
+ICBcomb/
+release_metadata/
+
+
+after final SHA256 freeze.
+
+
+STATUS:
+READY_FOR_FINAL_REPOSITORY_FREEZE
+

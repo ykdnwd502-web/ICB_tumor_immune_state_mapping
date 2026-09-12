@@ -1,0 +1,12 @@
+validation_item,observed,max_numeric_abs_diff,expected,pass
+historical_manifest_rows,3219,,3219,True
+historical_manifest_unique_cells,3219,,3219,True
+manifest_cells_missing_from_public,0,,0,True
+S24_field::n_interactions,12/12 exact,0.0,12/12 exact,True
+S24_field::n_source_target_pairs,12/12 exact,0.0,12/12 exact,True
+S24_field::max_prob,12/12 exact,3.88578058618805e-16,12/12 exact,True
+S24_field::median_prob,12/12 exact,3.6082248300317597e-16,12/12 exact,True
+S24_field::min_p_value,12/12 exact,0.0,12/12 exact,True
+S24_field::top_source_target,12/12 exact,,12/12 exact,True
+S24_field::direction_classes,12/12 exact,,12/12 exact,True
+S24_field::nominated_by_cellchat,12/12 exact,,12/12 exact,True
