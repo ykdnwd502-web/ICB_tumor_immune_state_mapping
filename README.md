@@ -1,73 +1,203 @@
 # ICB tumor immune state mapping
 
-This repository contains the reproducible analysis workflow, frozen input definitions, and release metadata for the ICB tumor immune state mapping project.
+## Reproducibility release
 
-## Repository organization
+This repository provides a complete reproducibility framework for the
+manuscript:
 
-```
-ICB_tumor_immune_state_mapping/
-├── ICBcomb/
-├── scripts/
-├── public_release/
-├── release_metadata/
-└── README.md
-```
+**Composition-aware tumor--immune state mapping in melanoma immune
+checkpoint blockade resistance**
 
-## Reproduction workflow
+The complete computational workspace is released as a versioned GitHub
+Release artifact.
 
-The recommended workflow is:
+### Download the reproducibility package
 
-1. Restore frozen inputs.
-2. Verify input integrity using SHA256 manifests.
-3. Install the required computational environment.
-4. Execute sequential workflows.
-5. Compare regenerated outputs with frozen references and release metadata.
+Please download:
 
-The workflow manifest is:
+-   `ICB_resistance_project.zip`
+-   `ICB_resistance_project.zip.sha256.txt`
 
-```
-release_metadata/RUN_MANIFEST.csv
-```
+from:
 
-Execution records are summarized in:
+**GitHub Release v1.0.0 --- Reproducibility Release**
 
-```
-release_metadata/REPRODUCTION_LOG_INDEX.csv
-```
+The ZIP archive contains the required frozen input files, analysis
+scripts, workflow documentation, and metadata required for computational
+reproduction.
 
-## Frozen inputs
+No additional input files are required beyond the released archive.
 
-Frozen input definitions are provided in:
+------------------------------------------------------------------------
 
-```
-ICBcomb/inputs/ICBcomb_INPUT_FREEZE_v1.0/
-```
+# Reproduction workflow
 
-Integrity validation files include:
+## 1. Extract the released archive
 
-```
-SHA256SUMS.csv
-FREEZE_STATUS.txt
-validate_ICBcomb_INPUT_FREEZE_v1.0.R
-```
+After downloading:
 
-## Computational environment
+    ICB_resistance_project.zip
 
-Environment information is provided in:
+extract the complete folder.
 
-```
-release_metadata/INSTALLED_PACKAGES_BEFORE_RUN.csv
-release_metadata/sessionInfo/
+For the most straightforward reproduction, place the extracted folder
+at:
+
+    D:\ICB_resistance_project
+
+The released workflow was validated using this project root structure.
+
+Set the extracted folder as the working directory in R/RStudio:
+
+``` r
+setwd("D:/ICB_resistance_project")
 ```
 
-## Release validation
+All subsequent scripts should be executed relative to this project root.
 
-The repository includes script, metadata, and repository SHA256 manifests together with execution logs for reproducible verification.
+------------------------------------------------------------------------
 
-## Data availability
+## 2. Data preparation and input validation
 
-Source code and reproducibility metadata are available through GitHub. Large frozen archives are deposited through Zenodo.
+The released archive already contains the required frozen input files.
 
-## Citation
+No additional input data preparation is required for the frozen
+reproduction workflow.
 
-Please cite the associated publication and archived release version when using this repository.
+The data preparation workflow is located in:
+
+    scripts/data_acquisition/
+
+Please follow the instructions provided in:
+
+    scripts/data_acquisition/README.md
+
+Important note:
+
+    03_*.R
+
+requires manual downloading of specific external resources according to
+the instructions in the data acquisition README.
+
+This step is intentionally separated because the corresponding external
+resource availability and access procedures may change over time.
+
+After completing data acquisition, proceed with the analysis workflow.
+
+------------------------------------------------------------------------
+
+## 3. Run reproduction scripts
+
+The recommended complete reproduction order is:
+
+    data acquisition
+            ↓
+    analysis
+            ↓
+    ICBcomb analysis
+            ↓
+    figure generation
+
+------------------------------------------------------------------------
+
+## 3.1 Data acquisition
+
+Run scripts under:
+
+    scripts/data_acquisition/
+
+These scripts prepare external datasets and validate required input
+resources.
+
+------------------------------------------------------------------------
+
+## 3.2 Main analysis workflows
+
+Run analysis scripts under:
+
+    scripts/analysis/
+
+The analysis modules correspond to the major computational components
+described in the manuscript.
+
+------------------------------------------------------------------------
+
+## 3.3 ICBcomb analysis
+
+The ICBcomb workflow is organized separately from the main scripts
+directory.
+
+Run:
+
+    ICBcomb/
+
+specifically:
+
+    ICBcomb/run_ICBcomb_full_sequential.R
+
+The associated analysis, audit, figure, and table-related scripts are
+located within:
+
+    ICBcomb/scripts/
+
+------------------------------------------------------------------------
+
+## 3.4 Figure generation
+
+Figure generation scripts are located in:
+
+    scripts/figures/
+
+These scripts generate the main and supplementary computational figures.
+
+Note:
+
+-   All computationally generated figures are included.
+-   Figure 1 and Supplementary Figure 1 were manually prepared and are
+    not generated by scripts.
+
+Recommended order:
+
+    data acquisition
+    → analysis
+    → ICBcomb
+    → figures
+
+------------------------------------------------------------------------
+
+# Repository structure
+
+    ICB_resistance_project/
+
+    ├── scripts/
+    │   ├── data_acquisition/
+    │   ├── analysis/
+    │   └── figures/
+    │
+    ├── ICBcomb/
+    │   ├── inputs/
+    │   ├── scripts/
+    │   └── run_ICBcomb_full_sequential.R
+    │
+    ├── release_metadata/
+    │
+    ├── public_release/
+    │
+    ├── README.md
+    ├── LICENSE
+    └── CITATION.cff
+
+------------------------------------------------------------------------
+
+# Reproducibility notes
+
+The release includes:
+
+-   frozen computational inputs
+-   analysis scripts
+-   figure generation scripts
+-   execution metadata
+-   SHA256 manifests
+
+The provided SHA256 checksum file can be used to verify archive
+integrity.
