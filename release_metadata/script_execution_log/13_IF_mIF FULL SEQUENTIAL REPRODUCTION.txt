@@ -1,0 +1,389 @@
+============================================================
+13_IF_mIF FULL SEQUENTIAL REPRODUCTION LOG
+============================================================
+
+
+Project:
+ICB_resistance_project
+
+
+Module:
+13_IF_mIF
+
+
+Purpose:
+One-click sequential reproduction of IF/mIF CosMx spatial validation
+analysis, including CosMx state-score reconstruction, IF metadata
+matching, protein-state correlation analysis, Supplementary Figure S23
+generation, Supplementary Table S23 generation, and frozen-output
+reproducibility comparison.
+
+
+Execution date:
+2026/09/10
+
+
+Environment:
+R version:
+[recorded in sessionInfo]
+
+
+Working directory:
+D:/ICB_resistance_project
+
+
+
+============================================================
+PIPELINE OVERVIEW
+============================================================
+
+
+Scripts executed sequentially:
+
+
+00_RUN_IF_mIF_SEQUENTIAL.R
+
+
+01_IF_mIF_build_CosMx_state_scores.R
+
+
+02_IF_mIF_match_and_correlation.R
+
+
+03_IF_mIF_make_S23.R
+
+
+04_IF_mIF_make_Supplementary_Table_S23.R
+
+
+05_IF_mIF_compare_with_frozen.R
+
+
+
+
+============================================================
+STEP EXECUTION SUMMARY
+============================================================
+
+
+
+------------------------------------------------------------
+STEP 01
+
+Script:
+01_IF_mIF_build_CosMx_state_scores.R
+
+
+Status:
+PASS
+
+
+Input:
+
+CosMx raw expression matrix,
+
+CosMx cell-level metadata,
+
+frozen four-state gene-set definitions.
+
+
+Frozen reference inputs:
+
+Step14B_v4_state_gene_sets_used_CLEAN.csv
+
+
+Output:
+
+IF_mIF_CosMx_cell_state_scores.csv
+
+IF_mIF_CosMx_cell_state_score_summary.csv
+
+IF_mIF_expression_gene_inventory.csv
+
+IF_mIF_gene_set_candidate_overlap_audit.csv
+
+
+Notes:
+
+CosMx cell-level four-state scoring was reconstructed using the
+frozen state-gene definitions.
+
+Cell-level state-score outputs reproduced the frozen Step14B reference.
+
+Total CosMx cells:
+86,600
+
+Frozen comparison:
+PASS
+
+
+
+------------------------------------------------------------
+STEP 02
+
+Script:
+02_IF_mIF_match_and_correlation.R
+
+
+Status:
+PASS
+
+
+Input:
+
+CosMx cell-state score table,
+
+IF metadata candidate tables,
+
+protein marker intensity measurements.
+
+
+Frozen reference inputs:
+
+Step14A_v8_IF_mIF_state_protein_merged_table_CLEAN.csv
+
+Step14A_v8_IF_mIF_protein_state_spearman_CLEAN.csv
+
+
+Output:
+
+IF_mIF_state_merge_audit.csv
+
+IF_mIF_state_protein_merged_table.csv
+
+IF_mIF_protein_state_spearman.csv
+
+IF_mIF_metadata_candidate_overlap_audit.csv
+
+
+Notes:
+
+IF metadata matching and state-protein correlation workflow
+completed successfully.
+
+Matched spatially resolved cells:
+
+86,572
+
+
+Frozen merge comparison:
+PASS
+
+
+Frozen correlation comparison:
+PASS
+
+
+
+------------------------------------------------------------
+STEP 03
+
+Script:
+03_IF_mIF_make_S23.R
+
+
+Status:
+PASS
+
+
+Input:
+
+Validated IF/mIF state-protein correlation tables.
+
+CosMx marker-state association outputs.
+
+
+Output:
+
+Supplementary_Figure_S23_IF_mIF_marker_signal_state_correlation.png
+
+Supplementary_Figure_S23_IF_mIF_marker_signal_state_correlation.pdf
+
+Supplementary_Figure_S23_IF_mIF_marker_signal_state_correlation.jpg
+
+Supplementary Figure S23 source and audit tables.
+
+
+Notes:
+
+Supplementary Figure S23 generation completed.
+
+Rows:
+32
+
+Markers:
+8
+
+States:
+4
+
+Spatially resolved cells:
+86,572
+
+
+
+------------------------------------------------------------
+STEP 04
+
+Script:
+04_IF_mIF_make_Supplementary_Table_S23.R
+
+
+Status:
+PASS
+
+
+Input:
+
+Validated IF/mIF analysis tables.
+
+
+Output:
+
+Supplementary_Table_S23_IF_mIF.xlsx
+
+
+Sheets:
+
+README
+
+IF_mIF_Spearman
+
+S23_harmonized
+
+Source_manifest
+
+
+Notes:
+
+Supplementary Table S23 export completed.
+
+Export engine:
+writexl::write_xlsx
+
+Mode:
+PURE_NO_DRAWING_NO_VML
+
+
+
+------------------------------------------------------------
+STEP 05
+
+Script:
+05_IF_mIF_compare_with_frozen.R
+
+
+Status:
+PASS
+
+
+Input:
+
+Generated IF/mIF outputs,
+
+Frozen authority reference outputs.
+
+
+Frozen reference inputs:
+
+Step14B_CosMx_cell_state_scores_for_IF_mIF_COMPOSITE_ID_CLEAN.csv
+
+Step14B_v4_state_gene_sets_used_CLEAN.csv
+
+Step14A_v8_IF_mIF_state_protein_merged_table_CLEAN.csv
+
+Step14A_v8_IF_mIF_protein_state_spearman_CLEAN.csv
+
+
+Output:
+
+13_IF_mIF_frozen_comparison_v1.5_FINAL.csv
+
+
+Notes:
+
+Frozen-output reproducibility audit completed.
+
+
+Step01 state scoring:
+PASS
+
+
+Step02 IF/state merged table:
+PASS
+
+
+Step03 correlation summary:
+PASS
+
+
+Maximum difference:
+0
+
+
+Blocking failures:
+0
+
+
+Overall:
+PASS
+
+
+
+
+============================================================
+FINAL OUTPUT SUMMARY
+============================================================
+
+
+CosMx state-score reconstruction:
+PASS
+
+
+IF metadata matching:
+PASS
+
+
+State-protein correlation analysis:
+PASS
+
+
+Supplementary Figure S23 generation:
+PASS
+
+
+Supplementary Table S23 generation:
+PASS
+
+
+Frozen-output comparison:
+PASS
+
+
+
+
+============================================================
+REPRODUCIBILITY ASSESSMENT
+============================================================
+
+
+All 13_IF_mIF analysis modules completed successfully.
+
+
+The reproduced outputs were generated from frozen state-score
+definitions, canonical CosMx objects, IF/mIF metadata inputs, and
+predefined analytical procedures.
+
+
+Frozen Step14A and Step14B reference outputs were successfully
+reproduced with zero numerical difference.
+
+
+No analytical parameters, state definitions, or statistical thresholds
+were modified during reproduction.
+
+
+
+============================================================
+13_IF_mIF FULL SEQUENTIAL REPRODUCTION COMPLETED
+============================================================

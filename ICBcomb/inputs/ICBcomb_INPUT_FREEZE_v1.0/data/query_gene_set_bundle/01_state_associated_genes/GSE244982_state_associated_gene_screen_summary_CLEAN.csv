@@ -1,0 +1,5 @@
+"State","n_UP","n_DOWN","UP_fallback_used","DOWN_fallback_used"
+"Immune_defective_Cold",100,100,FALSE,FALSE
+"Myeloid_Treg_Immunosuppressive",100,100,FALSE,FALSE
+"Tumor_dedifferentiation_Stromal_remodeling",100,100,FALSE,FALSE
+"Melanocytic_Differentiation",100,100,FALSE,FALSE

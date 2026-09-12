@@ -1,0 +1,14 @@
+"signature","gene","present"
+"IFN_response","IFNG",TRUE
+"IFN_response","JAK1",TRUE
+"IFN_response","JAK2",TRUE
+"IFN_response","STAT1",TRUE
+"IFN_response","IRF1",TRUE
+"IFN_response","CXCL9",TRUE
+"IFN_response","CXCL10",TRUE
+"IFN_response","GBP1",TRUE
+"IFN_response","GBP2",TRUE
+"IFN_response","IDO1",TRUE
+"IFN_response","IFIT1",TRUE
+"IFN_response","IFIT2",TRUE
+"IFN_response","IFIT3",TRUE

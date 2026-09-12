@@ -1,0 +1,4 @@
+SourceFile,State,Direction,GeneSetVersion,n_rows,n_positive_NES_rows,min_NES,max_NES,median_NES
+ICBcomb_Immune_cold_RESTORE_hybrid_results.csv,immune-defective/cold,RESTORE,hybrid,15,15,0.9338798364193492,2.68668922783024,2.03682285773057
+ICBcomb_Myeloid_Treg_SUPPRESS_hybrid_results.csv,myeloid–Treg immunosuppressive,SUPPRESS,hybrid,15,14,-1.3498196137320198,2.40569751689909,1.67769038694087
+ICBcomb_Tumor_dedifferentiation_SUPPRESS_hybrid_results.csv,tumor-dedifferentiation/stromal-remodeling,SUPPRESS,hybrid,15,13,-1.78323022626363,1.8212523181354,1.6287408999916102

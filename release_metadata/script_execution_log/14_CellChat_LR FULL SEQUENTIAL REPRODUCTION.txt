@@ -1,0 +1,347 @@
+============================================================
+14_CellChat_LR FULL SEQUENTIAL REPRODUCTION LOG
+============================================================
+
+Project:
+D:/ICB_resistance_project
+
+Module:
+CellChat candidate ligand-receptor nomination +
+CosMx spatial ligand-receptor validation +
+Supplementary Figure/Table generation +
+Frozen authority reproduction audit
+
+Run_date:
+2026/09/10
+
+============================================================
+EXECUTION CHAIN
+============================================================
+
+Runner:
+00_RUN_CellChat_LR_SEQUENTIAL.R
+
+Execution order:
+
+01_CellChat_candidate_LR_nomination.R
+02_CosMx_spatial_LR_primary_K20.R
+03_CosMx_spatial_LR_sensitivity_K10.R
+04_CosMx_spatial_LR_sensitivity_K30.R
+05_CellChat_LR_build_reporting_sources.R
+06_CellChat_LR_make_S24.R
+07_CellChat_LR_make_S25.R
+08_CellChat_LR_make_S26.R
+09_CellChat_LR_make_Supplementary_Tables_S24_S26.R
+10_CellChat_LR_compare_with_frozen.R
+
+
+============================================================
+INPUT CONTRACT
+============================================================
+
+Primary input:
+
+1.
+Public annotated single-cell object:
+
+D:/ICB_resistance_project/results/intermediate/GSE244983/
+GSE244983_seurat_major_annotated.rds
+
+
+2.
+Locked historical CellChat sampling manifest:
+
+D:/ICB_resistance_project/scripts/analysis/14_CellChat_LR/
+locked_input/
+CellChat_historical_sampling_group_manifest.csv
+
+
+SHA256:
+
+b4e1dd0cd5f3da4808d9284e23de7491dd4779186021530971c7dad43f579620
+
+
+3.
+CosMx spatial expression object:
+
+Run11_MK3 expression matrix +
+cell metadata +
+spatial coordinates
+
+
+4.
+Frozen tumor-immune state gene-set configuration:
+
+ICBcomb frozen four-state gene-set definition
+
+
+============================================================
+FROZEN ANALYSIS CONTRACT
+============================================================
+
+CellChat frozen parameters:
+
+Seed:
+20260504
+
+Maximum cells per group:
+800
+
+Minimum cells per group:
+30
+
+Database:
+CellChatDB.human full database
+
+Expression averaging:
+truncatedMean
+
+Trim:
+0.1
+
+Communication filtering:
+filterCommunication(min.cells=30)
+
+Tracked ligand-receptor axes:
+12
+
+
+CosMx spatial LR frozen parameters:
+
+Primary analysis:
+k = 20
+
+Sensitivity analyses:
+k = 10
+k = 30
+
+
+Permutation number:
+999 permutations per k
+
+
+High-expression definition:
+
+Top 25% among expressing cells
+
+
+Low-positive-cell rule:
+
+If positive cells <50:
+all positive cells considered high
+
+
+Minimum eligible spatial edges:
+
+100
+
+
+max_cells_for_knn:
+
+Inf
+
+
+Testing structure:
+
+12 axes × 5 contrasts
+
+=
+60 tests per k
+
+
+Multiple testing correction:
+
+BH FDR correction separately within each k-specific universe
+
+
+============================================================
+OUTPUTS GENERATED
+============================================================
+
+
+CellChat candidate LR nomination:
+
+Output directory:
+
+results/tables/CellChat_candidate_LR/
+
+
+Generated:
+
+CellChat_candidate_LR_nomination.csv
+
+CellChat_candidate_LR_summary.csv
+
+CellChat_candidate_pairs_for_CosMx_validation.csv
+
+CellChat_all_communications.csv
+
+
+CellChat object:
+
+results/rds/CellChat_candidate_LR/
+CellChat_object.rds
+
+
+
+============================================================
+
+CosMx spatial LR validation:
+
+Primary:
+
+results/tables/CosMx_spatial_LR_validation/KNN20/
+
+
+Sensitivity:
+
+results/tables/CosMx_spatial_LR_validation/KNN10/
+
+results/tables/CosMx_spatial_LR_validation/KNN30/
+
+
+Generated:
+
+CosMx_LR_gene_overlap_audit.csv
+
+CosMx_LR_input_audit.csv
+
+CosMx_LR_expression_threshold_audit.csv
+
+CosMx_spatial_knn_audit.csv
+
+CosMx_spatial_LR_validation_all.csv
+
+CosMx_spatial_LR_validation_summary.csv
+
+CosMx_spatial_LR_validation_positive_hits.csv
+
+
+============================================================
+
+Supplementary reporting outputs:
+
+Figures:
+
+Supplementary Figure S24
+
+Supplementary Figure S25
+
+Supplementary Figure S26
+
+
+Tables:
+
+Supplementary_Table_S24_CellChat_candidate_LR.xlsx
+
+Supplementary_Table_S25_CosMx_LR_K20.xlsx
+
+Supplementary_Table_S26_CosMx_LR_kNN_sensitivity.xlsx
+
+
+Output directory:
+
+results/tables/CellChat_LR_reporting/
+
+
+============================================================
+FROZEN VALIDATION AUDIT
+============================================================
+
+
+Validation script:
+
+10_CellChat_LR_compare_with_frozen.R
+
+
+Frozen authority references:
+
+Frozen CellChat candidate LR reference outputs
+
+Frozen CosMx spatial LR validation reference outputs
+
+Frozen reporting source tables
+
+Frozen Supplementary Figure/Table source objects
+
+
+Audit output:
+
+results/audit/
+14_CellChat_LR_sequential_reproduction_check/
+
+
+============================================================
+REPRODUCTION RESULT
+============================================================
+
+
+Frozen_reference:
+
+2/2 PASS
+
+
+Step01_CellChat:
+
+4/4 PASS
+
+
+Step02_04_CosMx_LR:
+
+3/3 PASS
+
+
+Step05_consolidation:
+
+1/1 PASS
+
+
+Step06_09_reporting:
+
+4/4 PASS
+
+
+Blocking failures:
+
+0
+
+
+Overall:
+
+PASS
+
+
+Decision:
+
+READY_FOR_PUBLIC_FREEZE
+
+
+============================================================
+SESSION INFORMATION
+============================================================
+
+
+SessionInfo:
+
+logs/14_CellChat_LR_runner/
+sessionInfo_14_CellChat_LR_full_sequential_reproduction.txt
+
+
+============================================================
+FINAL STATUS
+============================================================
+
+
+14_CellChat_LR sequential reproduction completed successfully.
+
+
+S24-S26 visual/reporting outputs generated.
+
+Current outputs reproduce frozen authorities.
+
+Module approved for public release freeze.
+
+
+============================================================
+END OF LOG
+============================================================

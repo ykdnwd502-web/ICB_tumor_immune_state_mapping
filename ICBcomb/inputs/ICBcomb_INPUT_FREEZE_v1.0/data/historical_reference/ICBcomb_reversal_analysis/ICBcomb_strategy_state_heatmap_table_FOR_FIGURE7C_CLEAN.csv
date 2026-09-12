@@ -1,0 +1,13 @@
+State,Strategy,median_reversal_score,support_n,support_dataset_n,min_FDR_q_val,median_FDR_q_val
+immune-defective/cold,Ascorbic acid + ICB,1.2306283508683498,1,1,0.185606060606061,0.185606060606061
+immune-defective/cold,Avadomide/IMiD + ICB,2.180234875209325,10,2,0,0
+immune-defective/cold,Cytokine/IL-15 + ICB,2.2592815400855706,1,1,0,0
+immune-defective/cold,Epigenetic therapy + ICB,1.4446937816761298,3,3,0.008323424494649217,0.018930957683741603
+myeloid–Treg immunosuppressive,Ascorbic acid + ICB,1.3213271976158099,1,1,0.12433862433862401,0.12433862433862401
+myeloid–Treg immunosuppressive,Avadomide/IMiD + ICB,2.0224243431033497,10,2,0,0
+myeloid–Treg immunosuppressive,Cytokine/IL-15 + ICB,,0,0,,
+myeloid–Treg immunosuppressive,Epigenetic therapy + ICB,1.6338458107037501,3,3,0,0.0048602673147022995
+tumor-dedifferentiation/stromal-remodeling,Ascorbic acid + ICB,1.23522283072629,1,1,0.20232896652110602,0.20232896652110602
+tumor-dedifferentiation/stromal-remodeling,Avadomide/IMiD + ICB,1.65565535186319,9,2,0,0.005201560468140439
+tumor-dedifferentiation/stromal-remodeling,Cytokine/IL-15 + ICB,,0,0,,
+tumor-dedifferentiation/stromal-remodeling,Epigenetic therapy + ICB,1.7961455210629302,3,3,0,0

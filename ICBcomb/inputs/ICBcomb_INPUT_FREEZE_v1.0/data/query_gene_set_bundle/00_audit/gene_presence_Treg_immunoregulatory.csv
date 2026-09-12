@@ -1,0 +1,10 @@
+"signature","gene","present"
+"Treg_immunoregulatory","FOXP3",TRUE
+"Treg_immunoregulatory","IL2RA",TRUE
+"Treg_immunoregulatory","CTLA4",TRUE
+"Treg_immunoregulatory","TIGIT",TRUE
+"Treg_immunoregulatory","ENTPD1",TRUE
+"Treg_immunoregulatory","IKZF2",TRUE
+"Treg_immunoregulatory","CCR8",TRUE
+"Treg_immunoregulatory","TNFRSF18",TRUE
+"Treg_immunoregulatory","LAYN",TRUE

@@ -1,0 +1,11 @@
+ICBcomb INPUT FREEZE v1.0
+
+Raw platform universe: PASS
+Core query bundle: PASS
+Melanocytic reference/control: PASS
+Gene-set cross-representation exactness: PASS
+Final query contract: PASS
+Historical numerical contract: PASS
+
+Blocking failures: 0
+Decision: READY_FOR_ICBCOMB_REBUILD

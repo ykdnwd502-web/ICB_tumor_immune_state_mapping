@@ -1,0 +1,112 @@
+Script:
+08_GSE244983_CAF_stromal_analysis.R
+
+Internal SCRIPT_ID:
+09_GSE244983_CAF_stromal_analysis
+
+Status:
+PASS
+
+Execution date:
+2026-09-11
+
+Project root:
+D:/ICB_resistance_project
+
+Input:
+results/intermediate/GSE244983/GSE244983_seurat_major_annotated.rds
+
+Canonical input dimensions:
+Cells:
+26,053
+
+Features:
+11,616
+
+Analysis performed:
+Canonical script-07 lineage validation
+CAF/stromal marker-definition export
+CAF/stromal marker-presence audit
+Normalized RNA expression retrieval
+CAF/stromal core-score calculation
+Cell-level CAF/stromal score export
+Major-cell-type CAF/stromal score summary
+Seurat-cluster CAF/stromal score summary
+CAF/stromal cluster-identity audit
+Main Figure 4B UMAP source-data generation
+Figure 4A / Supplementary Figure S9 DotPlot-compatible source-data generation
+Figure/source-data manifest generation
+Reproducibility gate validation
+Output-inventory generation
+
+Frozen CAF/stromal marker panel:
+21 markers
+
+Marker presence:
+21/21 markers detected
+
+Key lineage validation:
+Canonical input cell count:
+26,053
+
+Canonical input feature count:
+11,616
+
+Cell-set MD5:
+a574b6a23054be747b74e2e09f5ddea9
+
+Major malignant compartments:
+Malignant:
+17,708 cells
+
+Cycling malignant:
+1,888 cells
+
+CAF/stromal-like cells:
+333 cells
+
+Reproducibility gates:
+PASS
+
+Output table directory:
+results/tables/GSE244983/CAF_stromal_analysis
+
+Key outputs:
+GSE244983_CAF_stromal_marker_definitions.csv
+GSE244983_CAF_stromal_input_audit.csv
+GSE244983_script07_lineage_gates.csv
+GSE244983_CAF_stromal_marker_gene_presence.csv
+GSE244983_CAF_stromal_core_score_cell_level.csv
+GSE244983_CAF_stromal_core_score_distribution_audit.csv
+GSE244983_CAF_stromal_core_score_by_major_celltype.csv
+GSE244983_CAF_stromal_core_score_by_Seurat_cluster.csv
+GSE244983_CAF_stromal_cluster_identity_audit.csv
+GSE244983_CAF_stromal_core_score_UMAP_source.csv
+GSE244983_CAF_stromal_dotplot_by_major_celltype.csv
+GSE244983_CAF_stromal_dotplot_by_Seurat_cluster.csv
+GSE244983_CAF_stromal_figure_source_manifest.csv
+GSE244983_CAF_stromal_reproducibility_gates.csv
+GSE244983_CAF_stromal_output_inventory.csv
+
+Session information:
+logs/sessionInfo_09_GSE244983_CAF_stromal_analysis.txt
+
+R environment:
+R version 4.5.2
+Platform:
+x86_64-w64-mingw32/x64
+
+Warnings:
+Package build-version warnings only:
+Seurat, SeuratObject, sp, Matrix, dplyr, tidyr, and tibble were built under R 4.5.3.
+
+No blocking errors detected during the completed run.
+
+Execution note:
+The successful reproduction run was executed from:
+D:/ICB_resistance_project
+
+Final status:
+08_GSE244983_CAF_stromal_analysis.R finished successfully.
+
+PASS

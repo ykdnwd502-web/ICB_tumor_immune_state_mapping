@@ -1,0 +1,12 @@
+"signature","gene","present"
+"Cytotoxic_T_cell","CD8A",TRUE
+"Cytotoxic_T_cell","CD8B",TRUE
+"Cytotoxic_T_cell","GZMB",TRUE
+"Cytotoxic_T_cell","PRF1",TRUE
+"Cytotoxic_T_cell","NKG7",TRUE
+"Cytotoxic_T_cell","GNLY",TRUE
+"Cytotoxic_T_cell","CXCL9",TRUE
+"Cytotoxic_T_cell","CXCL10",TRUE
+"Cytotoxic_T_cell","CCL5",TRUE
+"Cytotoxic_T_cell","GZMA",TRUE
+"Cytotoxic_T_cell","GZMK",TRUE

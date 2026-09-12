@@ -1,0 +1,164 @@
+# Script Execution Log
+## 11_CosMx Spatial Validation Module
+
+Project:
+ICB_resistance_project
+
+Module:
+11_CosMx
+
+Version:
+v1.0
+
+Execution date:
+2026-09-10
+
+Runner:
+run_11_CosMx_full_sequential_reproduction.R
+
+
+## Environment
+
+R version:
+R 4.5.x
+
+Execution mode:
+Clean sequential rerun
+
+Execution order:
+
+01 -> 02 -> 03 -> 04 -> 05 -> reproduction_check
+
+
+---
+
+# Execution Summary
+
+| Step | Script | Status | Runtime(min) |
+|---|---|---|---|
+|1|01_CosMx_state_scoring.R|PASS|0.193|
+|2|02_CosMx_cell_level_spatial_validation.R|PASS|0.279|
+|3|03_CosMx_metadata_QC_and_technical_sensitivity.R|PASS|3.536|
+|4|04_CosMx_make_S21.R|PASS|0.126|
+|5|05_CosMx_make_S22.R|PASS|0.149|
+|6|11_CosMx_reproduction_check.R|PASS|0.004|
+
+
+Total:
+6/6 PASS
+
+
+---
+
+# Reproduction Audit
+
+## Cell lineage
+
+Initial CosMx cells:
+86600
+
+Spatially resolved cells:
+86572
+
+
+Step01 -> Step02 maximum difference:
+
+0
+
+
+Step02 -> Step03 maximum difference:
+
+2.220446e-16
+
+
+Interpretation:
+
+Numerical identity preserved after spatial coordinate and metadata-QC integration.
+
+
+---
+
+# S21 Reconstruction
+
+Input:
+
+CosMx_state_dual_high_with_coordinates_AND_metadata_QC.csv
+
+
+Output:
+
+Supplementary_Figure_S21_CosMx_spatial_state_distribution
+
+
+Status:
+
+PASS
+
+
+---
+
+# S22 Reconstruction
+
+Threshold sensitivity:
+
+Modes:
+- pooled
+- per-FOV
+
+Top fractions:
+- 20%
+- 25%
+- 30%
+
+
+Matched rows:
+
+6/6
+
+
+Maximum OR difference:
+
+0.0151
+
+
+Status:
+
+PASS
+
+
+---
+
+# Final Reproduction Gate
+
+Blocking failures:
+
+0
+
+
+Overall:
+
+PASS
+
+
+---
+
+# Generated outputs
+
+results/
+├── tables/
+│   ├── IF_mIF_validation/
+│   ├── CosMx_spatial_validation/
+│   └── CosMx_metadata_QC/
+│
+├── canonical/
+│   └── S21_S22_CosMx_v1.0/
+│       └── figures/
+│           ├── Supplementary_Figure_S21...
+│           └── Supplementary_Figure_S22...
+
+
+Audit log:
+
+results/audit/
+└── 11_CosMx_full_sequential_runner/
+    └── 11_CosMx_full_sequential_runner_log.csv

@@ -1,0 +1,61 @@
+============================================================ ICBcomb
+TRUE CLEAN-RUN REPRODUCTION LOG v1.0
+============================================================
+
+Project: D:/ICB_resistance_project/ICBcomb
+
+Run date: 2026/9/11
+
+Execution chain: 01_ICBcomb_source_lock_audit.R
+02_ICBcomb_build_source_tables.R 03_make_Figure9_ICBcomb.R
+04_make_Supplementary_Figure_S27.R 05_make_Supplementary_Figure_S28.R
+06_make_Supplementary_Tables_S27A_S27B.R 07_ICBcomb_post_rebuild_audit.R
+
+============================================================ INPUT
+CONTRACT ============================================================
+
+Frozen input package: inputs/ICBcomb_INPUT_FREEZE_v1.0
+
+Validation: - Input freeze SHA256: 86/86 PASS - Raw platform files: 3 x
+15 = 45 rows - Final query genes: RESTORE / SUPPRESS / SUPPRESS 98 / 73
+/ 81
+
+============================================================ REBUILD
+RESULTS ============================================================
+
+STEP 01 SOURCE-LOCK AUDIT: PASS
+
+STEP 02 SOURCE TABLE REBUILD: PASS - Raw rows: 45 - Positive NES > 0
+rows: 42 - State x strategy rows: 10 - Figure 9 source rows: A/B/C/D =
+3/10/12/3 - Frozen numerical-reference comparisons: 9/9 PASS
+
+STEP 03 FIGURE 9: PASS - PNG/JPG/PDF generated
+
+STEP 04 SUPPLEMENTARY FIGURE S27: PASS - Mapped rows: 15/15/15 -
+Positive prioritization rows: 15/14/13
+
+STEP 05 SUPPLEMENTARY FIGURE S28: PASS - State-strategy rows: 10 - Total
+positive supporting rows: 42 - Neutral prioritization terminology: PASS
+
+STEP 06 SUPPLEMENTARY TABLES S27A/S27B: PASS
+
+STEP 07 POST-REBUILD AUDIT: PASS - Gates: 6/6 - Decision:
+READY_FOR_MODULE_FREEZE
+
+============================================================ FINAL
+STATUS ============================================================
+
+Steps passed: 7/7
+
+Decision: READY_FOR_MODULE_FREEZE
+
+============================================================ SESSION
+INFORMATION ============================================================
+
+Runner sessionInfo:
+D:/ICB_resistance_project/logs/sessionInfo_ICBcomb_Runner.txt
+
+Environment: R version 4.5.2 Platform: x86_64-w64-mingw32/x64 Windows 11
+x64 Timezone: Asia/Shanghai
+
+============================================================

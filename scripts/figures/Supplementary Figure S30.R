@@ -1,0 +1,928 @@
+################--------------------------------------------
+## S30_cross_cohort_robustness.R
+##
+## Project: ICB_resistance_project
+##
+## PURPOSE
+##   Reporting-only rebuild of Supplementary Figure S30.
+##
+## AUTHORITATIVE INPUTS
+##   Script 05:
+##     results/tables/bulk_response_sensitivity/
+##
+##   Script 19:
+##     results/tables/cross_cohort_harmonization/
+##
+## IMPORTANT
+##   - Reporting only: this script does NOT recompute state scores,
+##     residualization models, AUCs, bootstrap distributions, or
+##     permutations.
+##   - Historical tables are intentionally not used as inferential authority.
+##   - No broad grep across all columns.
+##   - No flattening of arbitrary numeric columns.
+##   - No averaging across heterogeneous composition-adjustment models.
+##
+## PANELS
+##   A. Four-state raw GSE78220 association AUCs (script 05 / S11).
+##   B. Target-state GSE78220 leave-one-sample-out stability (script 05 / S11).
+##   C. Target-state prespecified composition-adjusted AUCs (script 05 / S13).
+##   D. Four-state cross-cohort canonical fixed-direction AUCs with DeLong CI
+##      (script 19); exact within-cohort permutation P values are retained
+##      in source data.
+##   E. Direct target-state point-estimate comparison:
+##      GSE78220 raw vs cross-cohort harmonized.
+##
+## INTERPRETATION
+##   Descriptive robustness / sensitivity analysis.
+##   Not predictive model validation, biomarker validation, or an
+##   independent validation cohort.
+################--------------------------------------------
+
+rm(list = ls())
+gc()
+
+options(stringsAsFactors = FALSE)
+
+################--------------------------------------------
+## 0. Project root
+################--------------------------------------------
+
+resolve_project_dir <- function() {
+  env_dir <- Sys.getenv("ICB_PROJECT_DIR", unset = "")
+  
+  if (nzchar(env_dir) && dir.exists(env_dir)) {
+    return(
+      normalizePath(
+        env_dir,
+        winslash = "/",
+        mustWork = TRUE
+      )
+    )
+  }
+  
+  wd <- normalizePath(
+    getwd(),
+    winslash = "/",
+    mustWork = TRUE
+  )
+  
+  if (
+    dir.exists(file.path(wd, "scripts")) &&
+    dir.exists(file.path(wd, "results"))
+  ) {
+    return(wd)
+  }
+  
+  stop(
+    "Cannot determine project root. Set:\n",
+    'Sys.setenv(ICB_PROJECT_DIR = "D:/ICB_resistance_project")'
+  )
+}
+
+project_dir <- resolve_project_dir()
+
+bulk_dir <- file.path(
+  project_dir,
+  "results",
+  "tables",
+  "bulk_response_sensitivity"
+)
+
+cross_dir <- file.path(
+  project_dir,
+  "results",
+  "tables",
+  "cross_cohort_harmonization"
+)
+
+out_root <- file.path(
+  project_dir,
+  "results",
+  "reporting",
+  "additional_robustness",
+  "S30_cross_cohort"
+)
+
+figure_dir <- file.path(project_dir, "results", "figures", "supplementary")
+table_dir  <- file.path(out_root, "tables")
+log_dir    <- file.path(out_root, "logs")
+
+dir.create(figure_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(table_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(log_dir, recursive = TRUE, showWarnings = FALSE)
+
+message("Project root: ", project_dir)
+message("S30 reporting output: ", out_root)
+
+################--------------------------------------------
+## 1. Packages
+################--------------------------------------------
+
+required_pkgs <- c(
+  "readr",
+  "dplyr",
+  "ggplot2",
+  "patchwork",
+  "openxlsx"
+)
+
+missing_pkgs <- required_pkgs[
+  !vapply(
+    required_pkgs,
+    requireNamespace,
+    logical(1),
+    quietly = TRUE
+  )
+]
+
+if (length(missing_pkgs) > 0L) {
+  stop(
+    "Missing required package(s): ",
+    paste(missing_pkgs, collapse = ", ")
+  )
+}
+
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(patchwork)
+library(openxlsx)
+
+################--------------------------------------------
+## 2. State definitions
+################--------------------------------------------
+
+STATE_COLS <- c(
+  "Immune_defective_Cold",
+  "Myeloid_Treg_Immunosuppressive",
+  "Tumor_dedifferentiation_Stromal_remodeling",
+  "Melanocytic_Differentiation"
+)
+
+STATE_DISPLAY <- c(
+  "Immune_defective_Cold" =
+    "immune-defective/cold",
+  "Myeloid_Treg_Immunosuppressive" =
+    "myeloid–Treg immunosuppressive",
+  "Tumor_dedifferentiation_Stromal_remodeling" =
+    "tumor-dedifferentiation/stromal-remodeling",
+  "Melanocytic_Differentiation" =
+    "melanocytic differentiation"
+)
+
+STATE_DISPLAY_PLOT <- c(
+  "Immune_defective_Cold" =
+    "immune-defective/cold",
+  "Myeloid_Treg_Immunosuppressive" =
+    "myeloid–Treg\nimmunosuppressive",
+  "Tumor_dedifferentiation_Stromal_remodeling" =
+    "tumor-dedifferentiation/\nstromal-remodeling",
+  "Melanocytic_Differentiation" =
+    "melanocytic\ndifferentiation"
+)
+
+STATE_COLORS <- c(
+  "Immune_defective_Cold" = "#4DBBD5",
+  "Myeloid_Treg_Immunosuppressive" = "#00A087",
+  "Tumor_dedifferentiation_Stromal_remodeling" = "#E64B35",
+  "Melanocytic_Differentiation" = "#3C5488"
+)
+
+TARGET_STATE <-
+  "Tumor_dedifferentiation_Stromal_remodeling"
+
+TARGET_DISPLAY <-
+  unname(STATE_DISPLAY[[TARGET_STATE]])
+
+TARGET_COLOR <-
+  unname(STATE_COLORS[[TARGET_STATE]])
+
+S13_METHOD_ORDER <- c(
+  "Raw_score",
+  "CAF_stromal_residualized",
+  "CAF_plus_melanoma_lineage_residualized",
+  "All_marker_composition_residualized",
+  "Purity_proxy_residualized",
+  "Marker_composition_PC1_PC2_residualized"
+)
+
+S13_METHOD_DISPLAY <- c(
+  "Raw_score" = "Raw",
+  "CAF_stromal_residualized" = "CAF/stromal",
+  "CAF_plus_melanoma_lineage_residualized" =
+    "CAF + melanoma-lineage",
+  "All_marker_composition_residualized" =
+    "All marker composition",
+  "Purity_proxy_residualized" =
+    "Purity proxy",
+  "Marker_composition_PC1_PC2_residualized" =
+    "Composition PC"
+)
+
+################--------------------------------------------
+## 3. Helpers
+################--------------------------------------------
+
+assert_true <- function(x, msg) {
+  if (!isTRUE(x)) {
+    stop(msg, call. = FALSE)
+  }
+}
+
+read_csv_required <- function(file, label) {
+  if (!file.exists(file)) {
+    stop(
+      label,
+      " not found:\n",
+      file,
+      call. = FALSE
+    )
+  }
+  
+  readr::read_csv(
+    file,
+    show_col_types = FALSE,
+    progress = FALSE
+  )
+}
+
+require_cols <- function(df, cols, label) {
+  missing <- setdiff(cols, colnames(df))
+  
+  if (length(missing) > 0L) {
+    stop(
+      label,
+      " is missing required column(s): ",
+      paste(missing, collapse = ", "),
+      call. = FALSE
+    )
+  }
+}
+
+parse_pass <- function(x) {
+  if (is.logical(x)) return(x)
+  
+  tolower(trimws(as.character(x))) %in%
+    c(
+      "true",
+      "t",
+      "1",
+      "pass",
+      "passed"
+    )
+}
+
+publication_theme <- function(base_size = 12.5) {
+  ggplot2::theme_bw(
+    base_size = base_size,
+    base_family = "sans"
+  ) +
+    ggplot2::theme(
+      plot.title = ggplot2::element_text(face = "bold", size = 15, hjust = 0, family = "sans"),
+      plot.subtitle = ggplot2::element_text(size = 11.25, hjust = 0, family = "sans"),
+      plot.tag = ggplot2::element_text(face = "bold", size = 16, family = "sans"),
+      axis.title = ggplot2::element_text(size = 12.5, face = "bold", family = "sans"),
+      axis.text = ggplot2::element_text(size = 11, color = "black", family = "sans"),
+      legend.title = ggplot2::element_text(size = 12, face = "bold", family = "sans"),
+      legend.text = ggplot2::element_text(size = 10.5, family = "sans"),
+      strip.text = ggplot2::element_text(size = 12, face = "bold", family = "sans"),
+      panel.grid.minor = ggplot2::element_blank(),
+      panel.grid.major.x = ggplot2::element_blank(),
+      plot.margin = ggplot2::margin(7, 8, 7, 8)
+    )
+}
+
+################--------------------------------------------
+## 4. Input files and validation
+################--------------------------------------------
+
+s05_gate_file <- file.path(
+  bulk_dir,
+  "05_reproducibility_gates.csv"
+)
+
+s11_auc_file <- file.path(
+  bulk_dir,
+  "S11_GSE78220_raw_auc_summary.csv"
+)
+
+s11_loso_file <- file.path(
+  bulk_dir,
+  "S11_GSE78220_loso_auc_values.csv"
+)
+
+s13_auc_file <- file.path(
+  bulk_dir,
+  "S13_formal_composition_adjusted_auc_summary.csv"
+)
+
+s19_gate_file <- file.path(
+  cross_dir,
+  "cross_cohort_reproducibility_gates.csv"
+)
+
+s19_auc_file <- file.path(
+  cross_dir,
+  "cross_cohort_fixed_direction_AUC_DeLong_summary.csv"
+)
+
+s19_boot_file <- file.path(
+  cross_dir,
+  "cross_cohort_seeded_bootstrap_AUC_summary.csv"
+)
+
+s19_perm_file <- file.path(
+  cross_dir,
+  "cross_cohort_seeded_within_cohort_permutation_summary.csv"
+)
+
+s05_gates <- read_csv_required(
+  s05_gate_file,
+  "Upstream reproducibility gates"
+)
+
+s19_gates <- read_csv_required(
+  s19_gate_file,
+  "Cross-cohort reproducibility gates"
+)
+
+assert_true(
+  all(parse_pass(s05_gates$Pass)),
+  "Upstream reproducibility gates are not all passed."
+)
+
+assert_true(
+  all(parse_pass(s19_gates$Pass)),
+  "Cross-cohort reproducibility gates are not all passed."
+)
+
+s11_auc <- read_csv_required(
+  s11_auc_file,
+  "Raw AUC summary"
+)
+
+s11_loso <- read_csv_required(
+  s11_loso_file,
+  "LOSO values"
+)
+
+s13_auc <- read_csv_required(
+  s13_auc_file,
+  "Composition-adjusted AUC summary"
+)
+
+s19_auc <- read_csv_required(
+  s19_auc_file,
+  "Cross-cohort AUC summary"
+)
+
+s19_perm <- read_csv_required(
+  s19_perm_file,
+  "Permutation summary"
+)
+
+################--------------------------------------------
+## 5. Panel construction
+################--------------------------------------------
+
+panelA <- s11_auc %>%
+  dplyr::filter(
+    .data$State %in% STATE_COLS
+  ) %>%
+  dplyr::transmute(
+    State = as.character(.data$State),
+    StateDisplay =
+      unname(
+        STATE_DISPLAY[
+          as.character(.data$State)
+        ]
+      ),
+    StateDisplayPlot =
+      unname(
+        STATE_DISPLAY_PLOT[
+          as.character(.data$State)
+        ]
+      ),
+    AUC = as.numeric(.data$AUC),
+    N = as.integer(.data$n_samples),
+    Responders =
+      as.integer(.data$n_responders),
+    NonResponders =
+      as.integer(.data$n_nonresponders)
+  )
+
+panelA$StateDisplay <- factor(
+  panelA$StateDisplay,
+  levels = rev(unname(STATE_DISPLAY[STATE_COLS]))
+)
+
+panelA$StateDisplayPlot <- factor(
+  panelA$StateDisplayPlot,
+  levels = rev(unname(STATE_DISPLAY_PLOT[STATE_COLS]))
+)
+
+pA <- ggplot2::ggplot(
+  panelA,
+  ggplot2::aes(
+    x = .data$StateDisplayPlot,
+    y = .data$AUC
+  )
+) +
+  ggplot2::geom_hline(
+    yintercept = 0.5,
+    linetype = "dashed",
+    linewidth = 0.45
+  ) +
+  ggplot2::geom_point(
+    ggplot2::aes(color = .data$State),
+    size = 3.2
+  ) +
+  ggplot2::scale_color_manual(values = STATE_COLORS, guide = "none") +
+  ggplot2::geom_text(
+    ggplot2::aes(
+      label = sprintf(
+        "%.3f",
+        .data$AUC
+      )
+    ),
+    hjust = -0.35,
+    size = 3.0
+  ) +
+  ggplot2::coord_flip(
+    ylim = c(
+      min(0.35, min(panelA$AUC) - 0.03),
+      min(1.0, max(panelA$AUC) + 0.09)
+    )
+  ) +
+  ggplot2::labs(
+    title =
+      "GSE78220 raw state-score associations",
+    subtitle =
+      "Strict binary response subset; n = 27",
+    x = NULL,
+    y = "AUC for non-response"
+  ) +
+  publication_theme()
+
+panelB <- s11_loso %>%
+  dplyr::filter(
+    .data$State == TARGET_STATE
+  ) %>%
+  dplyr::transmute(
+    State = as.character(.data$State),
+    StateDisplay = TARGET_DISPLAY,
+    RemovedSample =
+      as.character(.data$RemovedSample),
+    RemovedResponseGroup =
+      as.character(
+        .data$RemovedResponseGroup
+      ),
+    Full_AUC =
+      as.numeric(.data$Full_AUC),
+    LOSO_AUC =
+      as.numeric(
+        .data$LeaveOneOut_AUC
+      ),
+    Delta_AUC =
+      as.numeric(
+        .data$Delta_AUC_minus_full
+      )
+  )
+
+panelB$DisplayGroup <-
+  "tumor-dedifferentiation/\nstromal-remodeling"
+
+pB <- ggplot2::ggplot(
+  panelB,
+  ggplot2::aes(
+    x = .data$DisplayGroup,
+    y = .data$LOSO_AUC
+  )
+) +
+  ggplot2::geom_hline(
+    yintercept =
+      unique(panelB$Full_AUC),
+    linewidth = 0.45,
+    linetype = "solid"
+  ) +
+  ggplot2::geom_hline(
+    yintercept = 0.5,
+    linewidth = 0.45,
+    linetype = "dashed"
+  ) +
+  ggplot2::geom_boxplot(
+    width = 0.28,
+    outlier.shape = NA,
+    color = TARGET_COLOR
+  ) +
+  ggplot2::geom_jitter(
+    ggplot2::aes(
+      shape =
+        .data$RemovedResponseGroup
+    ),
+    width = 0.06,
+    height = 0,
+    size = 1.9,
+    alpha = 0.85,
+    color = TARGET_COLOR
+  ) +
+  ggplot2::scale_shape_discrete(
+    name = "Removed sample"
+  ) +
+  ggplot2::labs(
+    title =
+      "Leave-one-sample-out stability",
+    subtitle =
+      paste0(
+        "Solid line = full-sample AUC ",
+        sprintf(
+          "%.3f",
+          unique(panelB$Full_AUC)
+        )
+      ),
+    x = NULL,
+    y = "LOSO AUC"
+  ) +
+  publication_theme()
+
+panelC <- s13_auc %>%
+  dplyr::filter(
+    .data$cohort == "GSE78220",
+    .data$state_internal ==
+      TARGET_STATE,
+    .data$adjustment %in%
+      S13_METHOD_ORDER
+  ) %>%
+  dplyr::transmute(
+    Cohort =
+      as.character(.data$cohort),
+    State =
+      as.character(
+        .data$state_internal
+      ),
+    StateDisplay = TARGET_DISPLAY,
+    Adjustment =
+      as.character(
+        .data$adjustment
+      ),
+    MethodDisplay =
+      unname(
+        S13_METHOD_DISPLAY[
+          as.character(
+            .data$adjustment
+          )
+        ]
+      ),
+    AUC =
+      as.numeric(.data$auc),
+    CI_low =
+      as.numeric(
+        .data$bootstrap_ci_low
+      ),
+    CI_high =
+      as.numeric(
+        .data$bootstrap_ci_high
+      )
+  )
+
+panelC$MethodDisplay <- factor(
+  panelC$MethodDisplay,
+  levels = rev(
+    unname(
+      S13_METHOD_DISPLAY[
+        S13_METHOD_ORDER
+      ]
+    )
+  )
+)
+
+pC <- ggplot2::ggplot(
+  panelC,
+  ggplot2::aes(
+    x = .data$MethodDisplay,
+    y = .data$AUC
+  )
+) +
+  ggplot2::geom_hline(
+    yintercept = 0.5,
+    linetype = "dashed",
+    linewidth = 0.45
+  ) +
+  ggplot2::geom_errorbar(
+    ggplot2::aes(
+      ymin = .data$CI_low,
+      ymax = .data$CI_high
+    ),
+    width = 0.18,
+    linewidth = 0.45,
+    color = TARGET_COLOR
+  ) +
+  ggplot2::geom_point(
+    size = 2.8,
+    color = TARGET_COLOR
+  ) +
+  ggplot2::coord_flip() +
+  ggplot2::labs(
+    title =
+      "Composition-aware sensitivity",
+    subtitle =
+      "GSE78220 tumor-dedifferentiation/stromal-remodeling state",
+    x = NULL,
+    y = "AUC for non-response"
+  ) +
+  publication_theme()
+
+panelD <- s19_auc %>%
+  dplyr::filter(
+    .data$State %in% STATE_COLS
+  ) %>%
+  dplyr::left_join(
+    s19_perm %>%
+      dplyr::transmute(
+        State =
+          as.character(.data$State),
+        Permutation_P =
+          as.numeric(
+            .data$P_two_sided_from_0_5
+          ),
+        Permutation_N =
+          as.integer(.data$N_perm),
+        N_extreme_exact =
+          as.integer(
+            .data$N_extreme_exact
+          )
+      ),
+    by = "State"
+  ) %>%
+  dplyr::transmute(
+    State =
+      as.character(.data$State),
+    StateDisplay =
+      unname(
+        STATE_DISPLAY[
+          as.character(.data$State)
+        ]
+      ),
+    StateDisplayPlot =
+      unname(
+        STATE_DISPLAY_PLOT[
+          as.character(.data$State)
+        ]
+      ),
+    N =
+      as.integer(.data$N),
+    Responders =
+      as.integer(.data$Responders),
+    NonResponders =
+      as.integer(.data$NonResponders),
+    AUC =
+      as.numeric(.data$AUC),
+    CI_low =
+      as.numeric(.data$CI_low),
+    CI_high =
+      as.numeric(.data$CI_high),
+    Direction =
+      as.character(.data$Direction),
+    Permutation_P =
+      .data$Permutation_P
+  )
+
+panelD$StateDisplay <- factor(
+  panelD$StateDisplay,
+  levels = rev(unname(STATE_DISPLAY[STATE_COLS]))
+)
+
+panelD$StateDisplayPlot <- factor(
+  panelD$StateDisplayPlot,
+  levels = rev(unname(STATE_DISPLAY_PLOT[STATE_COLS]))
+)
+
+pD <- ggplot2::ggplot(
+  panelD,
+  ggplot2::aes(
+    x = .data$StateDisplayPlot,
+    y = .data$AUC
+  )
+) +
+  ggplot2::geom_hline(
+    yintercept = 0.5,
+    linetype = "dashed",
+    linewidth = 0.45
+  ) +
+  ggplot2::geom_errorbar(
+    ggplot2::aes(
+      ymin = .data$CI_low,
+      ymax = .data$CI_high,
+      color = .data$State
+    ),
+    width = 0.18,
+    linewidth = 0.45
+  ) +
+  ggplot2::geom_point(
+    ggplot2::aes(color = .data$State),
+    size = 3.2
+  ) +
+  ggplot2::scale_color_manual(values = STATE_COLORS, guide = "none") +
+  ggplot2::geom_text(
+    ggplot2::aes(
+      label = sprintf(
+        "%.3f",
+        .data$AUC
+      )
+    ),
+    hjust = -0.45,
+    vjust = -0.6,
+    size = 2.8
+  ) +
+  ggplot2::coord_flip(
+    ylim = c(
+      min(0.25, min(panelD$CI_low) - 0.03),
+      min(1.0, max(panelD$CI_high) + 0.09)
+    )
+  ) +
+  ggplot2::labs(
+    title =
+      "Cross-cohort harmonized associations",
+    subtitle =
+      "GSE78220 n=27 + GSE91061 n=33; cohort-only ComBat; DeLong 95% CI",
+    x = NULL,
+    y = "Fixed-direction AUC for non-response"
+  ) +
+  publication_theme()
+
+raw_target <- panelA %>%
+  dplyr::filter(
+    .data$State ==
+      TARGET_STATE
+  )
+
+harm_target <- panelD %>%
+  dplyr::filter(
+    .data$State ==
+      TARGET_STATE
+  )
+
+panelE <- data.frame(
+  Stage = c(
+    "GSE78220 raw",
+    "Cross-cohort harmonized"
+  ),
+  AUC = c(
+    raw_target$AUC[[1]],
+    harm_target$AUC[[1]]
+  ),
+  N = c(
+    raw_target$N[[1]],
+    harm_target$N[[1]]
+  ),
+  stringsAsFactors = FALSE
+)
+
+panelE$Stage <- factor(
+  panelE$Stage,
+  levels = panelE$Stage
+)
+
+pE <- ggplot2::ggplot(
+  panelE,
+  ggplot2::aes(
+    x = .data$Stage,
+    y = .data$AUC,
+    group = 1
+  )
+) +
+  ggplot2::geom_hline(
+    yintercept = 0.5,
+    linetype = "dashed",
+    linewidth = 0.45
+  ) +
+  ggplot2::geom_line(
+    linewidth = 0.65,
+    color = TARGET_COLOR
+  ) +
+  ggplot2::geom_point(
+    size = 3.4,
+    color = TARGET_COLOR
+  ) +
+  ggplot2::geom_text(
+    ggplot2::aes(
+      label = sprintf(
+        "%.3f",
+        .data$AUC
+      )
+    ),
+    hjust = -0.25,
+    vjust = 0.3,
+    size = 3.1
+  ) +
+  ggplot2::labs(
+    title =
+      "Attenuation of the target-state association after harmonization",
+    subtitle =
+      "Direct point-estimate comparison; no averaging across heterogeneous models",
+    x = NULL,
+    y = "AUC for non-response"
+  ) +
+  publication_theme()
+
+################--------------------------------------------
+## 6. Assembly and export
+################--------------------------------------------
+
+fig_s30 <-
+  (
+    pA |
+      pB
+  ) /
+  (
+    pC |
+      pD
+  ) /
+  pE +
+  patchwork::plot_layout(
+    heights = c(
+      1,
+      1.15,
+      0.85
+    )
+  ) +
+  patchwork::plot_annotation(
+    tag_levels = "A",
+    title =
+      "Integrated fragility, composition-aware sensitivity, and cross-cohort robustness of tumor–immune state associations",
+    subtitle =
+      paste0(
+        "Integrated reporting of sensitivity and cross-cohort comparability analyses; ",
+        "descriptive robustness analysis, not biomarker validation"
+      ),
+    theme =
+      ggplot2::theme(
+        plot.title =
+          ggplot2::element_text(
+            face = "bold",
+            size = 15,
+            hjust = 0,
+            family = "sans"
+          ),
+        plot.subtitle =
+          ggplot2::element_text(
+            size = 11.25,
+            hjust = 0,
+            family = "sans"
+          ),
+        plot.tag =
+          ggplot2::element_text(
+            face = "bold",
+            size = 16,
+            family = "sans"
+          )
+      )
+  )
+
+figure_base <- file.path(
+  figure_dir,
+  "Supplementary Figure S30. Integrated fragility, composition-aware sensitivity, and cross-cohort robustness of tumor–immune state associations"
+)
+
+ggplot2::ggsave(
+  filename =
+    paste0(
+      figure_base,
+      ".pdf"
+    ),
+  plot = fig_s30,
+  width = 12.5,
+  height = 14.5,
+  units = "in"
+)
+
+ggplot2::ggsave(
+  filename =
+    paste0(
+      figure_base,
+      ".png"
+    ),
+  plot = fig_s30,
+  width = 12.5,
+  height = 14.5,
+  units = "in",
+  dpi = 300
+)
+
+ggplot2::ggsave(
+  filename =
+    paste0(
+      figure_base,
+      ".jpg"
+    ),
+  plot = fig_s30,
+  width = 12.5,
+  height = 14.5,
+  units = "in",
+  dpi = 300
+)
+
+cat("\n============================================================\n")
+cat("SUPPLEMENTARY FIGURE S30 EXPORTED SUCCESSFULLY:\n")
+cat("Path: ", figure_dir, "\n")
+cat("============================================================\n")

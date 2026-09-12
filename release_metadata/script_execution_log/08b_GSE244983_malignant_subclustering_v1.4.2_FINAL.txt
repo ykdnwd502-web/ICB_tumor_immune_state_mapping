@@ -1,0 +1,176 @@
+Script:
+08b_GSE244983_malignant_subclustering_v1.4.2_FINAL.R
+
+Internal SCRIPT_ID:
+10_GSE244983_malignant_subclustering
+
+Script patch:
+v1.3_LF_hash_escape_fix
+
+Status:
+PASS
+
+Execution date:
+2026-09-10
+
+Project root:
+D:/ICB_resistance_project
+
+
+Input:
+Canonical GSE244983 Seurat object generated from upstream
+single-cell preprocessing and major-cell-type annotation workflow.
+
+
+Analysis performed:
+
+- Canonical malignant-lineage subset extraction
+- Malignant-only dimensional reduction and clustering
+- Harmony correction using Sample as grouping variable
+- Malignant subcluster identification
+- Compact malignant program scoring
+- Five-program malignant state analysis
+- Figure 5 source-data generation
+- Supplementary Figure S10 source-data generation
+- Reproducibility gate validation
+- Canonical malignant-subclustered Seurat object saving
+
+
+Frozen parameters:
+
+Global seed:
+20260430
+
+Variable features:
+2000
+
+PCA dimensions:
+40
+
+Harmony dimensions:
+1:30
+
+Clustering resolution:
+0.6
+
+FindClusters random seed:
+0
+
+UMAP seed:
+42
+
+
+Input audit:
+
+Parent object:
+Script-07 canonical Seurat object
+
+Canonical malignant lineage:
+19,596 cells
+
+Major malignant compartments:
+
+Malignant:
+17,708 cells
+
+Cycling malignant:
+1,888 cells
+
+
+Subclustering result:
+
+Detected malignant subclusters:
+
+Mal_0
+Mal_1
+Mal_2
+Mal_3
+Mal_4
+Mal_5
+Mal_6
+Mal_7
+Mal_8
+Mal_9
+
+
+Program scoring:
+
+Compact malignant programs:
+
+Tumor plasticity/dedifferentiation:
+6/6 genes detected
+
+Melanocytic differentiation:
+6/6 genes detected
+
+Antigen presentation:
+7/7 genes detected
+
+IFN response:
+6/6 genes detected
+
+
+Supplementary Figure S10:
+
+Reporting contract gates:
+PASS
+
+
+Generated outputs:
+
+results/tables/GSE244983/malignant_subclustering/
+
+Key outputs:
+
+GSE244983_malignant_cells_with_subclusters_and_compact_program_scores.csv
+
+GSE244983_malignant_subcluster_counts.csv
+
+GSE244983_malignant_subcluster_composition_by_sample.csv
+
+GSE244983_malignant_subcluster_parent_origin.csv
+
+GSE244983_malignant_subcluster_compact_program_summary.csv
+
+GSE244983_malignant_subcluster_compact_program_heatmap_matrix.csv
+
+GSE244983_malignant_subcluster_UMAP_source.csv
+
+GSE244983_malignant_marker_dotplot_source.csv
+
+GSE244983_SuppFigureS10A_marker_dotplot_source.csv
+
+GSE244983_SuppFigureS10B_program_z_distribution_source.csv
+
+GSE244983_SuppFigureS10C_mean_program_z_source.csv
+
+GSE244983_SuppFigureS10D_program_correlation_source.csv
+
+GSE244983_malignant_subclustering_figure_source_manifest.csv
+
+GSE244983_malignant_subclustering_reproducibility_gates.csv
+
+
+Canonical object:
+
+Saved:
+results/intermediate/GSE244983/GSE244983_malignant_subclustered.rds
+
+
+Session information:
+
+logs/sessionInfo_10_GSE244983_malignant_subclustering.txt
+
+
+Warnings:
+
+Only non-blocking package build-version warnings observed.
+
+No reproducibility gate failures.
+
+
+Final status:
+
+08b_GSE244983_malignant_subclustering_v1.4.2_FINAL.R finished successfully.
+
+PASS

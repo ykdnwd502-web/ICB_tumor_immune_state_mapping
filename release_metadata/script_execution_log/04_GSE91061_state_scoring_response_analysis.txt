@@ -1,0 +1,26 @@
+Script:
+04_GSE91061_state_scoring_response_analysis.R
+
+Status:
+PASS
+
+Execution date:
+2026-09-10
+
+Project root:
+D:/ICB_resistance_project
+
+Input:
+data_raw/external_validation/GSE91061
+Frozen gene sets:
+results/tables/ICBcomb_final_input_gene_sets_CLEAN/02_final_ICBcomb_gene_sets
+
+Output:
+results/tables/GSE91061
+results/intermediate/GSE91061
+
+Reproducibility gate:
+PASS
+
+Warnings:
+Non-blocking package build version warnings only.

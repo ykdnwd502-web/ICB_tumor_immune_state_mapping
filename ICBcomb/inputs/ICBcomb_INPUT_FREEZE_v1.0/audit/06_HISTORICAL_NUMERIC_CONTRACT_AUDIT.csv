@@ -1,0 +1,7 @@
+﻿gate,observed,expected,pass,audit_note
+combined_raw_rows,45,45,True,
+combined_raw_exact_to_three_raw_CSVs,True,True,True,Key-matched CSV round-trip compatibility; max numeric diff=5.107e-15; atol=1e-12; nonnumeric fields exact.
+positive_rows,42,42,True,
+positive_rows_exact_NES_gt_0_filter,True,True,True,Exact NES>0 row universe; key-matched CSV round-trip compatibility; max numeric diff=0.000e+00; atol=1e-12.
+strategy_summary_rows,10,10,True,
+final_query_counts_exact_98_73_81,True,True,True,

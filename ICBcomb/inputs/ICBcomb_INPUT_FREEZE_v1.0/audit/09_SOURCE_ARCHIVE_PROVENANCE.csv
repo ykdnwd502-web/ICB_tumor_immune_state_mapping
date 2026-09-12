@@ -1,0 +1,4 @@
+﻿source_archive,bytes,sha256,role
+icbcomb tables.zip,2974130,e35dcc24c8dd865839d35fbfcd590ce623e415da4e9c56d9bfffc00261a322bb,query-gene-set bundle + historical reference snapshot
+ICBcomb_raw_results.zip,6789,024c3e3eb3d9a8204dd48815e2e085df70871de7e41c5c9d610e8ed9bc684888,three raw ICBcomb platform result CSVs
+ICBcomb_reversal_analysis.zip,21960,24da87782bbebcf599bf204f368fbcc61c1c861c16cf33ff3f119f7497761792,prior separately supplied historical reference snapshot; cross-check only

@@ -1,0 +1,29 @@
+Script:
+02_GSE78220_state_scoring_response_survival_analysis.R
+
+Status:
+PASS
+
+Input:
+GSE78220_PatientFPKM.xlsx
+final_ICBcomb_gene_sets_CLEAN.gmt
+
+Imported gene sets:
+13
+
+Response:
+15 Responder
+12 NonResponder
+
+Cox:
+25 patients
+11 events
+
+Figure7:
+Generated
+
+SessionInfo:
+saved
+
+Warnings:
+15 (reviewed, non-blocking)

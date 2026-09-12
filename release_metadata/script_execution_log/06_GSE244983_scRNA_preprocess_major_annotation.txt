@@ -1,0 +1,58 @@
+Script:
+06_GSE244983_scRNA_preprocess_major_annotation.R
+
+Internal SCRIPT_ID:
+07_GSE244983_scRNA_preprocess_major_annotation
+
+Status:
+PASS
+
+Execution date:
+2026-09-10
+
+Project root:
+D:/ICB_resistance_project
+
+Input:
+GSE244983 raw count matrix
+GSE244983 author single-cell annotation table
+
+Processing:
+Raw count reconstruction
+Barcode alignment audit
+QC filtering
+LogNormalize normalization
+Variable feature selection
+PCA
+Harmony integration using Sample as grouping variable
+Seurat clustering
+UMAP visualization
+Frozen major-cell-type annotation
+
+Output:
+results/tables/GSE244983/preprocess_major_annotation
+
+Canonical object:
+results/intermediate/GSE244983/GSE244983_seurat_major_annotated.rds
+
+Key validation:
+Primary cells: 26053
+Features: 11616
+Cell-set MD5:
+a574b6a23054be747b74e2e09f5ddea9
+
+Clusters:
+18
+
+Malignant-lineage cells:
+19596
+
+Reproducibility gates:
+PASS
+
+Warnings:
+Package build-version warnings and Seurat RunUMAP method-change warning only.
+No blocking errors detected.
+
+Final message:
+All reproducibility gates passed.

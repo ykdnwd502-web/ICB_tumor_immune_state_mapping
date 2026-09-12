@@ -1,0 +1,13 @@
+pair_family,ligand_gene,receptor_genes,nominated_by_cellchat,validation_priority,n_evaluable_contrasts,n_enriched_contrasts,max_log2_spatial_enrichment,max_neighbor_fraction_percent,min_FDR,top_contrast,overall_support
+MIF-CD74,MIF,CD74,True,High,5,5,2.30044154509739,24.2042747485442,0.00166666666666667,Strict Myeloid-only → Dediff-only,CellChat-nominated and spatially enriched
+APP-CD74,APP,CD74,True,High,5,5,1.88776222471894,13.189849126522,0.00166666666666667,Strict Myeloid-only → Dediff-only,CellChat-nominated and spatially enriched
+SPP1-ITGAV/ITGB1,SPP1,ITGAV;ITGB1,True,High,5,5,1.24050284637488,4.79585759661196,0.00166666666666667,Dediff/Stromal-high → Myeloid–Treg-high,CellChat-nominated and spatially enriched
+SPP1-ITGAV/ITGB5,SPP1,ITGAV;ITGB5,True,High,5,5,1.08328809271403,2.83053202752779,0.00166666666666667,Dediff/Stromal-high → Myeloid–Treg-high,CellChat-nominated and spatially enriched
+MIF-CD44,MIF,CD44,True,High,5,5,0.719272789748102,16.2552938062467,0.00166666666666667,Dediff/Stromal-high → Myeloid–Treg-high,CellChat-nominated and spatially enriched
+MIF-CXCR4,MIF,CXCR4,True,High,5,4,0.601673189043822,8.54122551614611,0.00166666666666667,Strict Myeloid-only → Dediff-only,CellChat-nominated and spatially enriched
+GDF15-TGFBR2,GDF15,TGFBR2,True,Medium,5,3,0.807055334356905,1.90577024880889,0.00166666666666667,Dediff/Stromal-high → Myeloid–Treg-high,CellChat-nominated and spatially enriched
+SPP1-CD44,SPP1,CD44,True,High,5,3,0.670134938750494,3.43766543144521,0.00166666666666667,Strict Dediff-only → Myeloid-only,CellChat-nominated and spatially enriched
+FN1-CD44,FN1,CD44,True,High,5,3,0.284541592915206,10.0350714663843,0.00166666666666667,Dediff/Stromal-high → Myeloid–Treg-high,CellChat-nominated and spatially enriched
+COL3A1-CD44,COL3A1,CD44,False,Exploratory,5,0,-0.19392904302072,2.5281841572098,1.0,Strict Dediff-only → Myeloid-only,No positive spatial enrichment
+COL1A1-CD44,COL1A1,CD44,True,Medium,5,0,-0.214453303909257,2.4401138168343,1.0,Strict Dediff-only → Myeloid-only,No positive spatial enrichment
+COL1A2-CD44,COL1A2,CD44,True,Medium,5,0,-0.242141081456081,2.59892800423505,1.0,Strict Dediff-only → Myeloid-only,No positive spatial enrichment

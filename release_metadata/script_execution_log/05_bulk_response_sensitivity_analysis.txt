@@ -1,0 +1,36 @@
+Script:
+05_bulk_response_sensitivity_analysis.R
+
+Status:
+PASS
+
+Execution date:
+2026-09-10
+
+Project root:
+D:/ICB_resistance_project
+
+Input:
+GSE244982, GSE78220, GSE91061 expression/state-score objects
+Frozen ICBcomb gene sets
+Upstream bulk discovery outputs
+
+Output:
+results/tables/bulk_response_sensitivity
+results/intermediate/bulk_response_sensitivity
+logs/sessionInfo_05_bulk_response_sensitivity_analysis.txt
+
+Completed modules:
+S11 GSE78220 fragility audit
+S12 composition-aware audit
+S13 formal composition-adjusted analysis
+
+Reproducibility gates:
+PASS
+
+Warnings:
+Package build-version warnings only.
+No blocking errors detected.
+
+Final message:
+All public-release reproducibility gates passed.

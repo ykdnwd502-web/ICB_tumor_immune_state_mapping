@@ -1,0 +1,4 @@
+State,Direction,GeneSetVersion,GeneSet,n_query_genes
+immune-defective/cold,RESTORE,hybrid,Immune_defective_Cold_RESTORE_hybrid,98
+myeloid–Treg immunosuppressive,SUPPRESS,hybrid,Myeloid_Treg_Immunosuppressive_SUPPRESS_hybrid,73
+tumor-dedifferentiation/stromal-remodeling,SUPPRESS,hybrid,Tumor_dedifferentiation_Stromal_remodeling_SUPPRESS_hybrid,81

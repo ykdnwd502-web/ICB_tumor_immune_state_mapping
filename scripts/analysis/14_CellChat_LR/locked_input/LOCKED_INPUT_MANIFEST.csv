@@ -1,0 +1,2 @@
+input,sha256,rows,unique_cell_ids,expected_groups,provenance,policy
+CellChat_historical_sampling_group_manifest.csv,b4e1dd0cd5f3da4808d9284e23de7491dd4779186021530971c7dad43f579620,3219,3219,8,Historical Step16 broad_celltype standardization + seed=20260504/max800/min30 sampling; exported from frozen historical GSE244983 Seurat object and validated by 10D against the public rebuilt expression object.,IMMUTABLE_LOCKED_INPUT

@@ -1,0 +1,69 @@
+Script:
+07_GSE244983_scRNA_state_localization_source_attribution_v1.2.4_FINAL_merged.R
+
+Internal SCRIPT_ID:
+08_GSE244983_scRNA_state_localization_source_attribution
+
+Patch:
+v1.2.4_merged_S8_reporting_contract
+
+Status:
+PASS
+
+Execution date:
+2026-09-10
+
+Project root:
+D:/ICB_resistance_project
+
+Input:
+results/intermediate/GSE244983/GSE244983_seurat_major_annotated.rds
+results/tables/bulk_discovery/GSE244982_final_state_signature_mapping.csv
+results/tables/ICBcomb_final_input_gene_sets_CLEAN/02_final_ICBcomb_gene_sets/final_ICBcomb_gene_sets_CLEAN.gmt
+
+Primary analysis:
+Recomputed four predefined tumor-immune state scores
+Generated single-cell state-score source tables
+Localized state scores across major cell types
+Computed canonical-marker source-attribution analyses
+Generated six prespecified source-attribution contrasts
+Generated state-marker Spearman correlations
+Integrated Supplementary Figure S8 reporting-contract patch v1.2.3
+
+S8 reporting contract:
+PASS
+
+Observed S8 state-score-evaluable major-cell-type universe:
+B/Plasma cells
+CAF/stromal-like cells
+Cycling malignant
+Endothelial
+Malignant
+Myeloid cells
+T/NK cells
+T/NK/Treg-like cells
+
+Excluded annotation level:
+Cycling cells
+
+Canonical output object:
+results/intermediate/GSE244983/GSE244983_seurat_state_localized.rds
+
+Output table directory:
+results/tables/GSE244983/state_localization_source_attribution
+
+Session information:
+logs/sessionInfo_08_GSE244983_scRNA_state_localization_source_attribution.txt
+
+Output inventory:
+results/tables/GSE244983/state_localization_source_attribution/GSE244983_output_inventory.csv
+
+Reproducibility status:
+PASS
+
+Warnings:
+Package build-version warnings only.
+No blocking errors detected.
+
+Final status:
+Merged public script 07 v1.2.4 finished successfully; S8 reporting contract integrated.

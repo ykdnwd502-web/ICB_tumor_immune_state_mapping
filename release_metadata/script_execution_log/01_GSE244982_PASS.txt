@@ -1,0 +1,23 @@
+Script:
+01_GSE244982_bulk_state_scoring.R
+
+Status:
+PASS
+
+Input:
+GSE244982 bulk RNA-seq matrix
+Frozen ICBcomb gene sets
+
+Output:
+results/tables/bulk_discovery
+results/figures/bulk_discovery
+
+Validation:
+Frozen input loaded successfully.
+State scoring completed.
+
+SessionInfo:
+logs/sessionInfo_01_GSE244982_bulk_state_scoring.txt
+
+Date:
+2026-09-09
